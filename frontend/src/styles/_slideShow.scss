@@ -1,0 +1,33 @@
+.each-fade {
+  width: 100%;
+  height:auto;
+  cursor:move;
+  .image-container{
+    width:100%;
+    position:relative;
+    img{
+      width:1519px;
+      height:645px;
+    }
+    .text-box{
+      display:flex;
+      position:absolute;
+      bottom:0;
+      left:0;
+      z-index:2;
+      color:white;
+      width:100%;
+      border: 2px solid white;
+      height:300px;
+      padding: 25px 100px;
+      cursor:pointer;
+
+
+      h1{
+        font-size:38px;
+        line-height: 1.5;
+        font-weight: 800;
+      }
+    }
+  }
+}
