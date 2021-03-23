@@ -12,7 +12,7 @@ export default function SlideShow(){
     img3
   ];
   const fadeProperties = {
-    duration: 1000000,
+    duration: 3000,
     transitionDuration:1000,
     canSwipe: true,
   };
@@ -21,27 +21,26 @@ export default function SlideShow(){
       <Slide {...fadeProperties}>
         <div className="each-fade">
           <div className="image-container">
-            <img src={fadeImages[0]} alt="HAMBURGER"/>
+            <img src={fadeImages[0]} alt="Nem"/>
             <div class="text-box">
-
-              <h1>Nem cuon Viet Nam</h1>
+              <a  href="/">Nem cuon Viet Nam</a>
             </div>
           </div>
 
         </div>
         <div className="each-fade">
           <div className="image-container">
-            <img src={fadeImages[1]} alt="THITKHOTAU"/>
+            <img src={fadeImages[1]} alt="Spaghetti"/>
             <div class="text-box">
-              <h1>Spaghetti</h1>
+              <a href="/">Roasted Veggie Grain Platter</a>
             </div>
           </div>
         </div>
         <div className="each-fade">
           <div className="image-container">
-            <img src={fadeImages[2]} alt="TACOS"/>
+            <img src={fadeImages[2]} alt="Tacos"/>
             <div class="text-box">
-              <h1>Mexico Tacos</h1>
+              <a href="/">Mexico Ground Beef Tacos</a>
             </div>
           </div>
         </div>
