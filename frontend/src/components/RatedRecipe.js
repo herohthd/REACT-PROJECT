@@ -21,7 +21,7 @@ class RatedRecipe extends React.Component {
                     <a href="/" class="btn right-side">All Top Rated Recipes</a>
                 </div>
 
-               {/* Item */}
+               {/* Item 1*/}
                 <div class="recipe-list flex flex-jc-sb flex-ai-c">
                     {/* Item 1 */}
                   <div class="recipe-list__item">
