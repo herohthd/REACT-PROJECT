@@ -8,12 +8,13 @@ html {
 body {
     margin: 0;
     padding: 0;
-    line-height: 1.3;
+    font-size:14px;
+    line-height: 1.4;
     font-family: 'Lato', sans-serif;
 }
 .flex {
     display:flex;
-    
+
     &-jc-sb {
         justify-content: space-between;
     }
@@ -26,4 +27,18 @@ body {
     &-jc-sa {
         justify-content: space-around;
     }
+    &-wrap{
+        flex-wrap: wrap;
+    }
 }
+.left-side{
+    float:left  !important;
+}
+.right-side{
+    float:right  !important;
+}
+.App-body{
+    background-color: #eeeeee;
+    color:#676767;
+}
+
