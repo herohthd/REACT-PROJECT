@@ -51,7 +51,7 @@ section {
         padding-left: 15px;
         padding-right: 15px;
 
-        a {
+        .link {
           line-height: 50px;
           display: block;
           overflow: hidden;
@@ -93,7 +93,7 @@ section {
         padding-left: 15px;
         padding-right: 15px;
         // overflow: hidden;
-        a {
+        .link {
           .img-container {
             overflow: hidden;
           }
@@ -112,7 +112,7 @@ section {
         background-color: #fff;
         margin-top: -5px;
         max-height: 265px;
-        a {
+        .link {
           text-decoration: none;
           h4 {
             font-family: "Ubuntu", sans-serif;
@@ -120,6 +120,9 @@ section {
             line-height: 1.25;
             color: #676767;
             margin-top: 5px;
+          }
+          h4:hover{
+            color:$green;
           }
         }
         p {
@@ -134,7 +137,7 @@ section {
             height: 25px;
             margin-right: 10px;
           }
-          a {
+          .link {
             color: $green;
           }
         }
@@ -170,7 +173,7 @@ section {
         &__name {
           font-size: 20px;
         }
-        a {
+        .link {
           margin-bottom: 10px;
         }
       }

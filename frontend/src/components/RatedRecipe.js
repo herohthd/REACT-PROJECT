@@ -6,6 +6,7 @@ import phobo from '../img/phobo.png'
 import ChristineHa from '../img/ChristineHa.png'
 import pizza from '../img/pizza.png'
 import AntonioCarluccio from '../img/AntonioCarluccio.png'
+import {Link} from 'react-router-dom';
 class RatedRecipe extends React.Component {
     render() {
       return(
@@ -18,25 +19,25 @@ class RatedRecipe extends React.Component {
                         <i class="fa fa-star" aria-hidden="true"></i>
                         Top Rated Recipes
                     </h3>
-                    <a href="/" class="btn right-side">All Top Rated Recipes</a>
+                    <Link to="/" class="link btn right-side">All Top Rated Recipes</Link>
                 </div>
 
                {/* Item 1*/}
                 <div class="recipe-list flex flex-jc-sb flex-ai-c">
                     {/* Item 1 */}
                   <div class="recipe-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                         <div class="img-container">
                             <img src={strawberryCake} alt="StrawberryCake"></img>
                         </div>
-                    </a>
+                    </Link>
                     <div class="recipe-description">
-                        <a href="/"><h4>Creamy Strawberry Crepes</h4></a>
+                        <Link to="/" class="link"><h4>Creamy Strawberry Crepes</h4></Link>
                         <p>This recipe has been a family favorite for over 30 years! These crepes are delicious and very rich! Be sure you have at least 1 hour to prepare.</p>
                         <div class="avatar">
                             <img src={GordonRamsay} alt="Gordon Ramsay"></img>
                             By              
-                            <a href="/">  Gordon Ramsay</a>
+                            <Link to="/" class="link">  Gordon Ramsay</Link>
                         </div>
                     </div>
                     <div class="recipe-footer">
@@ -51,18 +52,18 @@ class RatedRecipe extends React.Component {
                   </div>
                   {/* Item 2 */}
                   <div class="recipe-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                         <div class="img-container">
                             <img src={phobo} alt="Phobo"></img>
                         </div>
-                    </a>
+                    </Link>
                     <div class="recipe-description">
-                        <a href="/"><h4>Pho bo Viet Nam</h4></a>
+                        <Link to="/" class="link"><h4>Pho bo Viet Nam</h4></Link>
                         <p>Vietnamese Beef Noodle (Phở Bò) is one of the most popular dish in Vietnam.Vietnamese Beef Noodle is the combination of broth, rice noodles (Bánh Phở)..</p>
                         <div class="avatar">
                             <img src={ChristineHa} alt="Christine Ha"></img>
                             By              
-                            <a href="/">  Christine Ha</a>
+                            <Link to="/" class="link">  Christine Ha</Link>
                         </div>
                     </div>
                     <div class="recipe-footer">
@@ -78,18 +79,18 @@ class RatedRecipe extends React.Component {
                   </div>
                   {/* Item 3 */}
                   <div class="recipe-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                         <div class="img-container">
                             <img src={pizza} alt="Pizza"></img>
                         </div>
-                    </a>
+                    </Link>
                     <div class="recipe-description">
-                        <a href="/"><h4>Creamy Strawberry Crepes</h4></a>
+                        <Link to="/" class="link"><h4>Creamy Strawberry Crepes</h4></Link>
                         <p>This recipe has been a family favorite for over 30 years! These crepes are delicious and very rich! Be sure you have at least 1 hour to prepare.</p>
                         <div class="avatar">
                             <img src={AntonioCarluccio} alt="Antonio Carluccio"></img>
                             By              
-                            <a href="/">  Antonio Carluccio</a>
+                            <Link to="/" class="link">  Antonio Carluccio</Link>
                         </div>
                     </div>
                     <div class="recipe-footer">

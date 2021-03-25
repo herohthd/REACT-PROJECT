@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/style.scss"
-
+import {Link} from 'react-router-dom';
 class QuickFilter extends React.Component {
     render() {
       return(
@@ -13,64 +13,64 @@ class QuickFilter extends React.Component {
                         <i class="fa fa-filter"></i>
                         Quick Filter
                     </h3>
-                    <a href="/" class="btn right-side">All Categories</a>
+                    <Link to="/" class=" link btn right-side">All Categories</Link>
                 </div>
 
                {/* Item */}
                 <div class="filter-list flex flex-jc-sb flex-ai-c flex-wrap">
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fa fa-beer" aria-hidden="true"></i>
                       Bervarages
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-bread-slice"></i>
                       Breads
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-hamburger"></i>
                       Hamburgers
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-ice-cream"></i>
                       Desserts
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-pizza-slice"></i>
                       Pizzas
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-seedling"></i>
                       Vegeterian
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-bacon"></i>
                       Meat
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-fish"></i>
                       Fish
-                    </a>
+                    </Link>
                   </div>
                   <div class="filter-list__item">
-                    <a href="/">
+                    <Link to="/" class="link">
                       <i class="fas fa-egg"></i>
                       Egg
-                    </a>
+                    </Link>
                   </div>
                 </div>
             </div>
