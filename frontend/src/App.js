@@ -12,7 +12,6 @@ function App() {
         <SlideShow/>
         {/* <FixedNav/> */}
       </header>
-
       <Body/>
     </div>
     </Router>
