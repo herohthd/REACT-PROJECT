@@ -13,8 +13,8 @@ class Body extends React.Component {
           <QuickFilter/>
           <RatedRecipe/>
           <LatestRecipe/>
-          {/* <RatedAuthor/>
-          <Favourited/>  */}
+          <RatedAuthor/>
+          {/* <Favourited/>    */}
         </div>
       );
     }
