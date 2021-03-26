@@ -5,6 +5,7 @@ import img1 from '../img/slide_5.png'
 import img2 from '../img/slide_6.png'
 import img3 from '../img/slide_7.png'
 import "../styles/style.scss"
+import {Link} from 'react-router-dom'
 export default function SlideShow(){
   const fadeImages = [
     img1,
@@ -23,7 +24,7 @@ export default function SlideShow(){
           <div className="image-container">
             <img src={fadeImages[0]} alt="Nem"/>
             <div class="text-box">
-              <a  href="/">Nem cuon Viet Nam</a>
+              <Link to="/" class="link">Nem cuon Viet Nam</Link>
             </div>
           </div>
 
@@ -32,7 +33,7 @@ export default function SlideShow(){
           <div className="image-container">
             <img src={fadeImages[1]} alt="Spaghetti"/>
             <div class="text-box">
-              <a href="/">Roasted Veggie Grain Platter</a>
+              <Link to="/" class="link">Roasted Veggie Grain Platter</Link>
             </div>
           </div>
         </div>
@@ -40,7 +41,7 @@ export default function SlideShow(){
           <div className="image-container">
             <img src={fadeImages[2]} alt="Tacos"/>
             <div class="text-box">
-              <a href="/">Mexico Ground Beef Tacos</a>
+              <Link to="/" class="link">Mexico Ground Beef Tacos</Link>
             </div>
           </div>
         </div>
