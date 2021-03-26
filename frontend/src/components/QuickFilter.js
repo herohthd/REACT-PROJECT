@@ -1,8 +1,31 @@
 import React from 'react';
 import "../styles/style.scss"
 import {Link} from 'react-router-dom';
+import QuickFilterItem from './QuickFilterItem';
 class QuickFilter extends React.Component {
     render() {
+      const classIcons = [
+        "fa fa-beer",
+        "fas fa-bread-slice",
+        "fas fa-hamburger",
+        "fas fa-ice-cream",
+        "fas fa-pizza-slice",
+        "fas fa-seedling",
+        "fas fa-bacon",
+        "fas fa-fish",
+        "fas fa-egg"
+      ];
+      const categories = [
+        "Bervarages",
+        "Breads",
+        "Hamburgers",
+        "Ice cream",
+        "Pizzas",
+        "Vegeterian",
+        "Meat",
+        "Fish",
+        "Egg"
+      ];
       return(
         <section>
             <div class="container">
@@ -18,60 +41,15 @@ class QuickFilter extends React.Component {
 
                {/* Item */}
                 <div class="filter-list flex flex-jc-sb flex-ai-c flex-wrap">
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fa fa-beer" aria-hidden="true"></i>
-                      Bervarages
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-bread-slice"></i>
-                      Breads
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-hamburger"></i>
-                      Hamburgers
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-ice-cream"></i>
-                      Desserts
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-pizza-slice"></i>
-                      Pizzas
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-seedling"></i>
-                      Vegeterian
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-bacon"></i>
-                      Meat
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-fish"></i>
-                      Fish
-                    </Link>
-                  </div>
-                  <div class="filter-list__item">
-                    <Link to="/" class="link">
-                      <i class="fas fa-egg"></i>
-                      Egg
-                    </Link>
-                  </div>
+                  <QuickFilterItem classFromFilter = {classIcons[0]} categoriesFromFilter = {categories[0]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[1]} categoriesFromFilter = {categories[1]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[2]} categoriesFromFilter = {categories[2]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[3]} categoriesFromFilter = {categories[3]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[4]} categoriesFromFilter = {categories[4]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[5]} categoriesFromFilter = {categories[5]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[6]} categoriesFromFilter = {categories[6]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[7]} categoriesFromFilter = {categories[7]}/>
+                  <QuickFilterItem classFromFilter = {classIcons[8]} categoriesFromFilter = {categories[8]}/>
                 </div>
             </div>
         </section>
