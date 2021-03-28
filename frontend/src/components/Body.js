@@ -14,7 +14,7 @@ class Body extends React.Component {
           <RatedRecipe/>
           <LatestRecipe/>
           <RatedAuthor/>
-          {/* <Favourited/>    */}
+          <Favourited/>   
         </div>
       );
     }
