@@ -1,0 +1,47 @@
+// *{
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//     font-family: 'Poppins', sans-serif;
+// }
+
+// .fixedNav {
+//     height: 40px;
+//     left: 0;
+//     width: 100%;
+//     padding: 0 2rem;
+//     background: #fff;
+//     z-index: 2;
+// }
+
+// .fixedNav_center {
+//     overflow: initial;
+//     transition: var(--mainTransition);
+//     list-style-type: none;
+//     display: inline-block;
+// }
+// .fixedNav_center li {
+//     display: inline-block;
+//     justify-content: space-between;
+// }
+// .fixedNav_center a {
+//     margin: 15px;
+//     display: inline-block;
+//     text-decoration: none;
+//     padding: 1rem 0;
+//     color: rgb(0, 0, 0);
+//     transition: var(--mainTransition);
+//     text-align: center;
+//     font-size:40 ;
+//     font-weight: 600;
+//     font-family: var(--main-font);
+.dropdown-item:hover {
+    background-color: lightcoral !important;
+    color: rgb(143, 141, 141);
+}
+.sticky-top {
+   position: -webkit-sticky;
+   position: sticky;
+   top:0;
+   z-index: 1020;
+}
