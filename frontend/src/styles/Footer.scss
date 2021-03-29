@@ -1,0 +1,61 @@
+.App-footer {
+  background-color: $dark;
+  width: 100%;
+  padding: 25px 0;
+  color: #fff;
+  height: auto;
+  .footer-container {
+    max-width: 100%;
+    width: 1150px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    .footer-content {
+      h4 {
+        width: 66.67%;
+        margin-top: 0;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 15px 0;
+        margin:14px 0;
+        padding:0;
+      }
+      ul {
+        list-style: none;
+        color: #fff;
+        margin:14px 0;
+        li {
+          .link {
+            i {
+              width: 30px;
+              height: 30px;
+              color: #333;
+              background: #fff;
+              border-radius: 3px;
+              margin-right: 10px;
+              display: inline-block;
+              text-align: center;
+              line-height: 30px;
+            }
+            .fa-facebook:hover {
+              color: blue;
+            }
+            .fa-google-plus:hover {
+              color: red;
+            }
+            .fa-instagram:hover{
+                color:red;
+            }
+            .fa-twitter:hover{
+                color:aqua;
+            }
+            .fa-youtube:hover{
+                color:rgb(152, 35, 35);
+            }
+          }
+        }
+      }
+    }
+  }
+}
