@@ -3,6 +3,7 @@ import Nav from './components/Nav'
 import {BrowserRouter as Router} from 'react-router-dom';
 import SlideShow from './components/SlideShow'
 import Body from './components/Body'
+import Footer from './components/Footer'
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
         {/* <FixedNav/> */}
       </header>
       <Body/>
+      <Footer/>
     </div>
     </Router>
   );
