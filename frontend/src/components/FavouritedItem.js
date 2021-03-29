@@ -20,10 +20,10 @@ class FavouritedItem extends React.Component {
                         <li><img src={this.props.avatars} alt={this.props.authorsName}></img>
                                 By              
                             <Link to="/" class="link">  {this.props.authorsName}</Link></li>
-                        <li>{this.props.difficulty}</li>
-                        <li><i class="fa fa-table"></i>  {this.props.yeild}</li>
-                        <li><i class="fa fa-users"></i>  {this.props.numOfPeople}</li>
-                        {/* <li><i class="fa fa-clock-o" aria-hidden="true"></i>  30 min</li> */}
+                            {this.props.difficulty&&<li>{this.props.difficulty}</li>}
+                            {this.props.yeild&&<li><i class="fa fa-table"></i>  {this.props.yeild}</li>}
+                            {this.props.numOfPeople&&<li><i class="fa fa-users"></i>  {this.props.numOfPeople}</li>}
+                            {this.props.times && <li><i class="fa fa-clock-o" aria-hidden="true"></i>  {this.props.times}</li>}
                     </ul>
                 </div>
             </div>
