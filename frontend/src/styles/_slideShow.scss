@@ -6,8 +6,8 @@
 	  width: 100%;
 	  position: relative;
 	  img {
-		width: 1519px;
-		height: 645px;
+		width: 100%;
+		height: auto;
 	  }
 	  .text-box {
 		display: flex;
@@ -32,7 +32,7 @@
 	  }
 	}
   }
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
 	.each-fade {
 	  .image-container {
 		img {
