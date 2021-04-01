@@ -59,3 +59,15 @@
     }
   }
 }
+@media only screen and (max-width: 600px) {
+  .App-footer{
+    .footer-container{
+      .footer-content{
+        flex-direction: column;
+        ul{
+          padding-left:0px;
+        }
+      }
+    }
+  }
+}
