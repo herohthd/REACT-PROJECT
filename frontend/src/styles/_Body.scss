@@ -70,6 +70,7 @@ section {
             font-size: 20px;
             color: #6ba72b;
             border-right: 1px solid rgb(204, 193, 193);
+            transition: 0.25s linear;
           }
         }
         a:hover i {
@@ -108,7 +109,6 @@ section {
 			padding: 25px;
 			background-color: #fff;
 			margin-top: -5px;
-			max-height: 265px;
 			.link {
 			  text-decoration: none;
 			  h4 {
@@ -230,6 +230,7 @@ section {
 				  }
 				  .link {
 					color: $green;
+          text-decoration: none;
 				  }
 				}
 			  }
