@@ -9,16 +9,41 @@ import LukeNguyen from '../img/LukeNguyen.png'
 import HungHuynh from '../img/HungHuynh.png'
 import Ray from '../img/Ray.png'
 class RatedAuthor extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            authors: [
+                {
+                    name:"Gordon Ramsay",
+                    image:GordonRamsay
+                },
+                {
+                    name:"Christine Ha",
+                    image:ChristineHa                
+                },
+                {
+                    name:"Antonio Carluccio",
+                    image:AntonioCarluccio
+                },
+                {
+                    name:"Luke Nguyen",
+                    image:LukeNguyen
+                },
+                {
+                    name:"Hung Huynh",
+                    image:HungHuynh
+                },
+                {
+                    name:"Ray",
+                    image:Ray
+                },
+            ]
+        }
+    }
     render() {
-        const authors = [
-            GordonRamsay,
-            ChristineHa,
-            AntonioCarluccio,
-            LukeNguyen,
-            HungHuynh,
-            Ray
-        ];
-      return(
+        let authors = this.state.authors.map(item=>
+                    <RatedAuthorItem author={item.image}/>);
+        return(
         <section>
             <div class="container">
 
@@ -33,12 +58,7 @@ class RatedAuthor extends React.Component {
 
             {/* Item 1*/}
                 <div class="author-list flex flex-jc-sb flex-ai-c">
-                    <RatedAuthorItem author={authors[0]}/>
-                    <RatedAuthorItem author={authors[1]}/>
-                    <RatedAuthorItem author={authors[2]}/>
-                    <RatedAuthorItem author={authors[3]}/>
-                    <RatedAuthorItem author={authors[4]}/>
-                    <RatedAuthorItem author={authors[5]}/>
+                    {authors};
                 </div>
                 
             </div>
