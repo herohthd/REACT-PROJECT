@@ -11,7 +11,7 @@ import Code from './components/Code';
 import Layouts from './components/Layouts';
 import Blog from './components/Blog';
 import Contact from './components/ContactUs';
-import FixedNav from './components/FixedNav.js';
+import FixedNav from './components/FixedNav';
 import search from './components/search';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';

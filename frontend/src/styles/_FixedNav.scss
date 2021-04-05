@@ -1,47 +1,71 @@
-// *{
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//     font-family: 'Poppins', sans-serif;
-// }
+.navbar-expand-md {
+    transition-timing-function: ease-in;
+    transition: 0.5s; 
+}
+.navbar{
+    width: 100%;
+    max-width: 100%;
+    min-height: 6vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    transition: all .2s ease;
+    z-index: 1020;
+}
 
-// .fixedNav {
-//     height: 40px;
-//     left: 0;
-//     width: 100%;
-//     padding: 0 2rem;
-//     background: #fff;
-//     z-index: 2;
-// }
+.scrolled{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    background-color: lightblue;
+}
+.container {
+    background-color: #fff;
+    margin-left: auto;
+    margin-right:auto ;
+    padding-left: 50px;
+    padding-right: 50px;
+}
 
-// .fixedNav_center {
-//     overflow: initial;
-//     transition: var(--mainTransition);
-//     list-style-type: none;
-//     display: inline-block;
-// }
-// .fixedNav_center li {
-//     display: inline-block;
-//     justify-content: space-between;
-// }
-// .fixedNav_center a {
-//     margin: 15px;
-//     display: inline-block;
-//     text-decoration: none;
-//     padding: 1rem 0;
-//     color: rgb(0, 0, 0);
-//     transition: var(--mainTransition);
-//     text-align: center;
-//     font-size:40 ;
-//     font-weight: 600;
-//     font-family: var(--main-font);
+.fas {
+    font-size: 25px;
+    color:  #4d8f20 !important;
+}
+.navbar-collapse {
+    font-size: 18px;
+    font-family:"Lato", sans-serif;
+    color: #000;
+}
+.nav-item {
+    padding-right: 100px ;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+.nav-link:hover {
+    color: #6ba72b !important;
+    background-color: rgb(189, 250, 154);
+}
 .dropdown-item:hover {
-    background-color: lightcoral !important;
+    background-color: rgb(126, 245, 122) !important;
     color: rgb(143, 141, 141);
 }
-.sticky-top {
-   position: -webkit-sticky;
-   position: sticky;
-   top:0;
-   z-index: 1020;
-}
+
+@media only screen and (max-width: 600px) {
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    navbar-toggler {
+        text-align: center;
+    }
+    .navbar-collapse {
+        flex-direction: column;
+        width: 100%;
+        z-index: 1020;
+    }
+  }
