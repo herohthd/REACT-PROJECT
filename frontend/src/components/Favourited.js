@@ -5,8 +5,6 @@ import strawberryCake from '../img/strawberryCake.png'
 import GordonRamsay from '../img/GordonRamsay.png'
 import phobo from '../img/phobo.png'
 import ChristineHa from '../img/ChristineHa.png'
-import pizza from '../img/pizza.png'
-import AntonioCarluccio from '../img/AntonioCarluccio.png'
 import FavouritedItem from './FavouritedItem'
 class Favourited extends React.Component {
     constructor(props) {
