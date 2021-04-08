@@ -79,7 +79,7 @@ class Login extends React.Component {
 
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="text"
+                                    <input type="password"
                                     onChange={this.changePassword}
                                     value={this.state.password}
                                     ></input>
@@ -91,28 +91,28 @@ class Login extends React.Component {
 
 
                         {/* Login */}
-                        <div class="form flex">
+                        {/* <div class="form flex">
                             <h1 class="form-title">Login</h1>
                             <form class="left-side"onSubmit={this.onSubmit}>
                                 <div class="form-group">
-                                    <label for="username">Username</label>
+                                    <label for="usernameLogIn">Username</label>
                                     <input type="text"
-                                    onChange={this.changeUserName}
-                                    value={this.state.username}
+                                    onChange={this.changeUserNameLogIn}
+                                    value={this.state.usernameLogIn}
                                     ></input>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="text"
-                                    onChange={this.changePassword}
-                                    value={this.state.password}
+                                    <label for="passwordLogIn">Password</label>
+                                    <input type="password"
+                                    onChange={this.changePasswordLogIn}
+                                    value={this.state.passwordLogIn}
                                     ></input>
                                 </div>
 
                                 <input type="submit" class="btn" value="Log in"></input>
                             </form>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <Footer/>
