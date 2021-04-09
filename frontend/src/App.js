@@ -16,9 +16,9 @@ import search from './components/search';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import {Navbar} from 'react-bootstrap';
+import Footer from './components/Footer'
 function App() {
   return (
-    <Router>
     <div className="App">
       <header className="App-header">
         <Nav/>
@@ -37,8 +37,8 @@ function App() {
           </Switch>
       </header>
       <Body/>
+      <Footer/>
     </div>
-    </Router>
   );
 }
 

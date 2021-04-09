@@ -5,7 +5,7 @@ import {Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const FixedNav = () => {
     const [show, setShow] = useState(false);
-    let navbarClasses = 'navbar navbar-expand-md navbar-light bg-light';
+    let navbarClasses = 'navbar navbar-expand-md navbar-light';
 
     const handleScroll = () => {
         if ( window.scrollY > 556 ){

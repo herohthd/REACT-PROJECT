@@ -8,51 +8,53 @@ import pizza from '../img/pizza.png'
 import AntonioCarluccio from '../img/AntonioCarluccio.png'
 import {Link} from 'react-router-dom';
 import RatedRecipeItem from './RatedRecipeItem';
+import QuickFilterItem from './QuickFilterItem';
 class RatedRecipe extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          recipes: [
+            {
+                images: strawberryCake,
+                avatars: GordonRamsay,
+                authorsName:"Gordon Ramsay",
+                foodTitles:"Creamy Strawberry Crepes",
+                foodDescriptions:"This recipe has been a family favorite for over 30 years! These crepes are delicious and very rich! Be sure you have at least 1 hour to prepare.",
+                difficulty:"Easy",
+                yeild:"Few dozen",
+                numOfPeople:"1 person",
+                times:"30min"
+            },
+            {
+                images: phobo,
+                avatars: ChristineHa,
+                authorsName:"Christine Ha",
+                foodTitles:"Pho bo Viet Nam",
+                foodDescriptions:"Vietnamese Beef Noodle (Phở Bò) is one of the most popular dish in Vietnam.Vietnamese Beef Noodle is the combination of broth, rice noodles (Bánh Phở)...",
+                difficulty:"Medium",
+                yeild:"Few dozen",
+                numOfPeople:"2 people",
+            },
+            {
+                images: pizza,
+                avatars: AntonioCarluccio,
+                authorsName:"Gordon Ramsay",
+                foodTitles:"Creamy Strawberry Crepes",
+                foodDescriptions:"This recipe has been a family favorite for over 30 years! These crepes are delicious and very rich! Be sure you have at least 1 hour to prepare.",
+                difficulty:"Hard",
+                yeild:"Few dozen",
+                numOfPeople:"3 people",
+                times:"2 hours"
+            },
+          ]
+        };
+    }
     render() {
-    const images = [
-        strawberryCake,
-        phobo,
-        pizza
-    ];
-    const avatars = [
-        GordonRamsay,
-        ChristineHa,
-        AntonioCarluccio
-    ];
-    const authorsName = [
-        "Gordon Ramsay",
-        "Christine Ha",
-        "Antonio Carluccio"
-    ];
-    const foodTitles = [
-        "Creamy Strawberry Crepes",
-        "Pho bo Viet Nam",
-        "Strawberry Crepes"
-    ];
-    const foodDescriptions = [
-        "This recipe has been a family favorite for over 30 years! These crepes are delicious and very rich! Be sure you have at least 1 hour to prepare.",
-        "Vietnamese Beef Noodle (Phở Bò) is one of the most popular dish in Vietnam.Vietnamese Beef Noodle is the combination of broth, rice noodles (Bánh Phở)...",
-        "This recipe has been a family favorite for over 30 years! These crepes are delicious and very rich! Be sure you have at least 1 hour to prepare."
-    ];
-    const difficulty = [
-        "Easy",
-        "Medium",
-        "Hard"
-    ];
-    const yeild = [
-        "Few Dozen"
-    ];
-    const numOfPeople = [
-        "1 person",
-        "2 people",
-        "3 people"
-    ]
-    const times = [
-        "30 min",
-        "1 hour",
-        "2 hour"
-    ];
+        let RatedRecipes = this.state.recipes.map(item=><RatedRecipeItem images={item.images} 
+            avatars={item.avatars} authorsName={item.authorsName} 
+            foodTitles={item.foodTitles} foodDescriptions={item.foodDescriptions} 
+            difficulty={item.difficulty} yeild={item.yeild} 
+            numOfPeople={item.numOfPeople} times={item.times}/>);
     return(
         <section>
             <div class="container">
@@ -68,9 +70,7 @@ class RatedRecipe extends React.Component {
 
                {/* Item */}
                 <div class="recipe-list flex flex-jc-sb flex-ai-c">
-                    <RatedRecipeItem images={images[0]} avatars={avatars[0]} authorsName={authorsName[0]} foodTitles={foodTitles[0]} foodDescriptions={foodDescriptions[0]} difficulty={difficulty[0]} yeild={yeild[0]} numOfPeople={numOfPeople[0]} times={times[0]}/>
-                    <RatedRecipeItem images={images[1]} avatars={avatars[1]} authorsName={authorsName[1]} foodTitles={foodTitles[1]} foodDescriptions={foodDescriptions[1]} difficulty={difficulty[1]} yeild={yeild[0]} numOfPeople={numOfPeople[1]} />
-                    <RatedRecipeItem images={images[2]} avatars={avatars[2]} authorsName={authorsName[2]} foodTitles={foodTitles[2]} foodDescriptions={foodDescriptions[2]} difficulty={difficulty[2]}                  numOfPeople={numOfPeople[2]} times={times[2]}/>
+                    {RatedRecipes};
                 </div>
             </div>
         </section>

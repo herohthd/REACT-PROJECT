@@ -17,7 +17,7 @@ class Nav extends React.Component {
                               <span>REGISTER</span></Link></div>
               <div class="nav__menu-item"><Link to='/Login'><i class="fa fa-sign-in" aria-hidden="true"></i>
                               <span>LOG IN</span></Link></div>
-              <div class="nav__menu-item"><Link to='/'><i class="fa fa-user" aria-hidden="true"></i>
+              <div class="nav__menu-item"><Link to='/Login'><i class="fa fa-user" aria-hidden="true"></i>
                               <span>SUBMIT RECIPE</span></Link></div>
             </div>
         </nav>

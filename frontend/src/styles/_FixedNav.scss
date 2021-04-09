@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #eee;
+    background-color: #fff;
     transition: all .2s ease;
     z-index: 1020;
 }
@@ -19,7 +19,6 @@
     position: fixed !important;
     top: 0;
     left: 0;
-    background-color: lightblue;
 }
 .container {
     background-color: #fff;
@@ -45,14 +44,13 @@
     position: relative;
     display: block;
     padding: 10px 15px;
+    font-weight: 700;
 }
 .nav-link:hover {
     color: #6ba72b !important;
-    background-color: rgb(189, 250, 154);
 }
 .dropdown-item:hover {
-    background-color: rgb(126, 245, 122) !important;
-    color: rgb(143, 141, 141);
+    color: #6ba72b !important;
 }
 
 @media only screen and (max-width: 600px) {

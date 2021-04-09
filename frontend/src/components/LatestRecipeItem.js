@@ -22,10 +22,10 @@ class LatestRecipeItem extends React.Component {
             <div class="recipe-footer">
                 <div class="recipe-footer__content">
                     <ul>
-                        <li>{this.props.difficulty}</li>
-                        <li><i class="fa fa-table"></i>  {this.props.yeild}</li>
-                        <li><i class="fa fa-users"></i>  {this.props.numOfPeople}</li>
-                        {/* <li><i class="fa fa-clock-o" aria-hidden="true"></i>  30 min</li> */}
+                        {this.props.difficulty&&<li>{this.props.difficulty}</li>}
+                        {this.props.yeild&&<li><i class="fa fa-table"></i>  {this.props.yeild}</li>}
+                        {this.props.numOfPeople&&<li><i class="fa fa-users"></i>  {this.props.numOfPeople}</li>}
+                        {this.props.times && <li><i class="fa fa-clock-o" aria-hidden="true"></i>  {this.props.times}</li>}
                     </ul>
                 </div>
             </div>
