@@ -5,7 +5,9 @@ import {Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const FixedNav = () => {
     const [show, setShow] = useState(false);
-    let navbarClasses = 'navbar navbar-expand-md navbar-light bg-light';
+    const [responsive, setResponsive] = useState(false);
+    let effect = show && !responsive;
+    let navbarClasses = 'navbar navbar-expand-md navbar-light';
 
     const handleScroll = () => {
         if ( window.scrollY > 556 ){
@@ -16,12 +18,28 @@ const FixedNav = () => {
         }
     }
 
+    const handleResponsive = () => {
+        if ( window.screen.width <= 600 ) {
+            setResponsive(true);
+        }
+        else {
+            setResponsive(false);
+        }
+    }
+
     useEffect ( () => {
         window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResponsive);
     },[])
 
+    useEffect ( () => {
+        console.log(window.scrollY);
+        console.log(window.screen.width);
+        console.log(effect);
+    },[show, responsive])
+
     return (
-        <nav className={show ? navbarClasses + ' scrolled' : navbarClasses}>
+        <nav className={ effect ? navbarClasses + ' scrolled' : navbarClasses}>
             <div className="container">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

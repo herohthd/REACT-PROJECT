@@ -24,17 +24,6 @@ function App() {
         <Nav/>
         <SlideShow/>
         <FixedNav/>
-          <Switch>
-            <Route path='home' component={Home}/>
-            <Route path='recipies' component={Recipies}/>
-            <Route path='members' component={Members}/>
-            <Route path='post' component={Post}/>
-            <Route path='code' component={Code}/>
-            <Route path='layouts' component={Layouts}/>
-            <Route path='blog' component={Blog}/>
-            <Route path='contact' component={Contact}/>
-            <Route path='search' component={search} />
-          </Switch>
       </header>
       <Body/>
     </div>
