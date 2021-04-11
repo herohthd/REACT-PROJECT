@@ -52,19 +52,33 @@
     .navbar{
         flex-direction: column;
         align-items: flex-start;
-        height:80px;
+        height:50px;
+        margin-bottom:200px;
         .container{
-            justify-content: center !important;
             display: flex;
             .navbar-toggler{
                 text-align: center;
                 display: flex;
                 margin: auto;
+                color:$green;
+                font-size:12px;
+                border:none;
             }
             .navbar-collapse{
+                background-color: #fff;
                 flex-direction: column;
                 width: 100%;
                 z-index: 1020;
+                padding-left:10px;
+                .navbar-nav{
+                    .nav-item{
+                        padding-top:0 ;
+                        padding-bottom: 0 ;
+                        text-align: left ;
+                        font-weight: 500;
+                        font-size: 15px;
+                    }
+                }
             }
         }
     }

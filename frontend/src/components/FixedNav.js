@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import "../styles/style.scss"
-import {Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const FixedNav = () => {
     const [show, setShow] = useState(false);
@@ -41,8 +39,9 @@ const FixedNav = () => {
     return (
         <nav className={ effect ? navbarClasses + ' scrolled' : navbarClasses}>
             <div className="container">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler button-white-menu collapsed"  data-toggle="collapse" data-target="#navbarSupportedContent">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class ="fa fa-bars fa-3x"></i>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">

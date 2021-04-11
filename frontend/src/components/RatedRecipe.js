@@ -8,7 +8,6 @@ import pizza from '../img/pizza.png'
 import AntonioCarluccio from '../img/AntonioCarluccio.png'
 import {Link} from 'react-router-dom';
 import RatedRecipeItem from './RatedRecipeItem';
-import QuickFilterItem from './QuickFilterItem';
 class RatedRecipe extends React.Component {
     constructor(props) {
         super(props);
