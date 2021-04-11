@@ -55,7 +55,7 @@ const FixedNav = () => {
                         <li className="nav-item" active>
                             <a className="nav-link" href="/members">Members</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        {/* <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="/post" id="navbardrop" data-toggle="dropdown">
                                 Post Formats
                             </a>
@@ -73,7 +73,7 @@ const FixedNav = () => {
                                 <a class="dropdown-item" href="/recipe">Recipes</a>
                                 <a class="dropdown-item" href="/genrall">Generall</a>
                             </div>
-                        </li>
+                        </li> */}
                         <li className="nav-item" active>
                             <a className="nav-link" href="/blog">Blog</a>
                         </li>
