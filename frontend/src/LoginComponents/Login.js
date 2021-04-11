@@ -41,16 +41,23 @@ class Login extends React.Component {
             password: this.state.password
         }
 
-        axios.post('http://localhost:4000/login', registered)
-            .then(response => console.log(response.data))
-        
+        axios.post('http://localhost:4000/register', registered)
+        .then(function (response) {
+            console.log(response);
+            if(response.data.status === 'error'){
+                alert(response.data.error);
+            }
+            else alert('Register successfully');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         // window.location = '/';
         this.setState({
             fullname: '',
             username: '',
             password: ''
         })
-        alert("Register successfully");
     }
     render(){
         return(
@@ -69,7 +76,7 @@ class Login extends React.Component {
                                     <input type="text"
                                     onChange={this.changeFullName}
                                     value={this.state.fullname}
-                                    ></input>
+                                    required></input>
                                 </div>
 
                                 <div class="form-group">
@@ -77,7 +84,7 @@ class Login extends React.Component {
                                     <input type="text"
                                     onChange={this.changeUserName}
                                     value={this.state.username}
-                                    ></input>
+                                    required></input>
                                 </div>
 
                                 <div class="form-group">
@@ -85,7 +92,7 @@ class Login extends React.Component {
                                     <input type="password"
                                     onChange={this.changePassword}
                                     value={this.state.password}
-                                    ></input>
+                                    required></input>
                                 </div>
 
                                 <input type="submit" class="btn" value="Register"></input>
@@ -102,7 +109,7 @@ class Login extends React.Component {
                                     <input type="text"
                                     onChange={this.changeUserNameLogIn}
                                     value={this.state.usernameLogIn}
-                                    ></input>
+                                    required></input>
                                 </div>
 
                                 <div class="form-group">
@@ -110,7 +117,7 @@ class Login extends React.Component {
                                     <input type="password"
                                     onChange={this.changePasswordLogIn}
                                     value={this.state.passwordLogIn}
-                                    ></input>
+                                    required></input>
                                 </div>
 
                                 <input type="submit" class="btn" value="Log in"></input>
