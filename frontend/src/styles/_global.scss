@@ -8,11 +8,11 @@ html {
   box-sizing: inherit;
 }
 body {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  line-height: 1.4;
-  font-family: "Lato", sans-serif;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  font-family: "Lato", sans-serif !important;
 }
 .flex {
   display: flex;
@@ -39,10 +39,9 @@ body {
 .right-side {
   float: right ;
 }
-.App-body {
-  background-color: #eeeeee;
-  color: #676767;
-}
-section{
+.App{
   background-color: #eee;
+}
+.App-body {
+  color: #676767;
 }

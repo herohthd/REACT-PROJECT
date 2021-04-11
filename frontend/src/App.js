@@ -11,12 +11,13 @@ import Code from './components/Code';
 import Layouts from './components/Layouts';
 import Blog from './components/Blog';
 import Contact from './components/ContactUs';
-import FixedNav from './components/FixedNav';
 import search from './components/search';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import {Navbar} from 'react-bootstrap';
 import Footer from './components/Footer'
+import FixedNav from './components/FixedNav'
+
 function App() {
   return (
     <div className="App">
@@ -24,17 +25,6 @@ function App() {
         <Nav/>
         <SlideShow/>
         <FixedNav/>
-          <Switch>
-            <Route path='home' component={Home}/>
-            <Route path='recipies' component={Recipies}/>
-            <Route path='members' component={Members}/>
-            <Route path='post' component={Post}/>
-            <Route path='code' component={Code}/>
-            <Route path='layouts' component={Layouts}/>
-            <Route path='blog' component={Blog}/>
-            <Route path='contact' component={Contact}/>
-            <Route path='search' component={search} />
-          </Switch>
       </header>
       <Body/>
       <Footer/>

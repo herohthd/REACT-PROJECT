@@ -49,6 +49,7 @@ class Login extends React.Component {
             username: '',
             password: ''
         })
+        alert("Register successfully");
     }
     render(){
         return(
@@ -91,7 +92,7 @@ class Login extends React.Component {
 
 
                         {/* Login */}
-                        {/* <div class="form flex">
+                        <div class="form flex">
                             <h1 class="form-title">Login</h1>
                             <form class="left-side"onSubmit={this.onSubmit}>
                                 <div class="form-group">
@@ -112,7 +113,7 @@ class Login extends React.Component {
 
                                 <input type="submit" class="btn" value="Log in"></input>
                             </form>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
                 <Footer/>
