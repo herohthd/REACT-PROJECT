@@ -1,11 +1,10 @@
 section {
+  background-color: #eee;
   .form-container {
     max-width: 100%;
-    width: 750px;
+    width: 1040px;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
     margin-bottom:75px;
     .form-outer {
       flex-direction: row;
@@ -61,11 +60,25 @@ section {
             line-height: 25px;
             border-radius: 3px;
             border: none;
-            width: 70px;
+            width: 75px;
           }
           .btn:hover {
             background-color: #000;
           }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  section {
+    .form-container {
+      .form-outer {
+        display:flex;
+        flex-direction: column;
+        .form {
+          width:100%;
+          margin-bottom:20px;
         }
       }
     }

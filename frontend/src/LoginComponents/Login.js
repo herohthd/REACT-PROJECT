@@ -1,7 +1,8 @@
-import React from 'react';
-import Nav from '../components/Nav';
+import React from 'react'
+import Nav from '../components/Nav'
 import Footer from '../components/Footer'
-import axios from 'axios';
+import FixedNav from '../components/FixedNav'
+import axios from 'axios'
 import '../styles/style.scss'
 class Login extends React.Component {
     constructor(props){
@@ -55,6 +56,7 @@ class Login extends React.Component {
         return(
             <section>
                 <Nav/>
+                <FixedNav/>
                 <div class="form-container">
                     <div class="form-outer flex">
 
