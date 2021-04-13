@@ -10,13 +10,56 @@ class Login extends React.Component {
         this.state = {
             fullname: '',
             username: '',
-            password: ''
+            password: '',
+            usernameLogIn: '',
+            passwordLogIn: ''
         }
         this.changeFullName = this.changeFullName.bind(this);
         this.changeUserName = this.changeUserName.bind(this);
         this.changePassword = this.changePassword.bind(this);
+        this.changeUserNameLogIn = this.changeUserNameLogIn.bind(this);
+        this.changePasswordLogIn = this.changePasswordLogIn.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onSubmitLogin = this.onSubmitLogin.bind(this);
     }
+    changeUserNameLogIn(event){
+        this.setState({
+            usernameLogIn:event.target.value
+        })
+    }
+    changePasswordLogIn(event){
+        this.setState({
+            passwordLogIn:event.target.value
+        })
+    }
+    onSubmitLogin(event){
+        event.preventDefault();
+        
+        const login = {
+            usernameLogin:this.state.usernameLogIn,
+            passwordLogin:this.state.passwordLogIn
+        }
+        axios.post('http://localhost:4000/login', login)
+        .then(function (response) {
+            console.log(response);
+            if(response.data.status === 'error'){
+                alert(response.data.error);
+            }
+            else {
+                console.log("Got the token",response.data);
+                alert('Login successfully');
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        this.setState({
+            usernameLogin: '',
+            passwordLogin: ''
+        })
+        window.location = '/';
+    }
+
     changeFullName(event){
         this.setState({
             fullname:event.target.value
@@ -61,17 +104,17 @@ class Login extends React.Component {
     }
     render(){
         return(
-            <section>
+            <section className="login-section">
                 <Nav/>
                 <FixedNav/>
-                <div class="form-container">
-                    <div class="form-outer flex">
+                <div className="form-container">
+                    <div className="form-outer flex">
 
                         {/* Register */}
-                        <div class="form flex">
-                            <h1 class="form-title">Register</h1>
-                            <form class="left-side"onSubmit={this.onSubmit}>
-                                <div class="form-group">
+                        <div className="form flex">
+                            <h1 className="form-title">Register</h1>
+                            <form className="left-side"onSubmit={this.onSubmit}>
+                                <div className="form-group">
                                     <label for="fullname">Full name</label>
                                     <input type="text"
                                     onChange={this.changeFullName}
@@ -79,7 +122,7 @@ class Login extends React.Component {
                                     required></input>
                                 </div>
 
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="username">Username</label>
                                     <input type="text"
                                     onChange={this.changeUserName}
@@ -87,7 +130,7 @@ class Login extends React.Component {
                                     required></input>
                                 </div>
 
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="password">Password</label>
                                     <input type="password"
                                     onChange={this.changePassword}
@@ -95,16 +138,16 @@ class Login extends React.Component {
                                     required></input>
                                 </div>
 
-                                <input type="submit" class="btn" value="Register"></input>
+                                <input type="submit" className="btn" value="Register"></input>
                             </form>
                         </div>
 
 
                         {/* Login */}
-                        <div class="form flex">
-                            <h1 class="form-title">Login</h1>
-                            <form class="left-side"onSubmit={this.onSubmit}>
-                                <div class="form-group">
+                        <div className="form flex">
+                            <h1 className="form-title">Login</h1>
+                            <form className="left-side"onSubmit={this.onSubmitLogin}>
+                                <div className="form-group">
                                     <label for="usernameLogIn">Username</label>
                                     <input type="text"
                                     onChange={this.changeUserNameLogIn}
@@ -112,7 +155,7 @@ class Login extends React.Component {
                                     required></input>
                                 </div>
 
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="passwordLogIn">Password</label>
                                     <input type="password"
                                     onChange={this.changePasswordLogIn}
@@ -120,7 +163,7 @@ class Login extends React.Component {
                                     required></input>
                                 </div>
 
-                                <input type="submit" class="btn" value="Log in"></input>
+                                <input type="submit" className="btn" value="Log in"></input>
                             </form>
                         </div>
                     </div>

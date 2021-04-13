@@ -2,28 +2,53 @@ const { request, response } = require('express');
 const express = require('express');
 const router = express.Router();
 const signUpTemplateCopy = require('../models/SignUpModel')
+const signInTemplateCopy = require('../models/SignInModel')
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = "WEBPROGRAMMING GROUP3"
 
 router.post('/register', async(req,res) => {
-
-    const saltPassword = await bcrypt.genSalt(10)
-    const securePassword = await bcrypt.hash(req.body.password, saltPassword)
-
-    const signUpUser = new signUpTemplateCopy({
-        fullname:req.body.fullname,
-        username:req.body.username,
-        password:securePassword ,
-    })
-    signUpUser.save()
-    .then(data =>{
-        res.json(data)
-    })
-    .catch(error =>{
+    const {fullname,username,password:securePassword} = req.body
+    const password = await bcrypt.hash(securePassword,10)
+    try {
+        const response = await signUpTemplateCopy.create({
+            fullname,
+            username,
+            password
+        })
+        console.log("Register successfully",response)
+    }
+    catch (error) {
+        console.log(error.message)
         if(error.code === 11000){
-            res.json({status:'error',error:'Username already in use!'})
+            return res.json({status:'error',error:'Username is in use!'})
         }
-    })
+        throw error
+    }
+    res.json({status:'ok'})
 });
 
+router.post('/login', async(req,res) => {
+
+    const {usernameLogin,passwordLogin} = req.body
+    console.log(usernameLogin)
+    console.log(passwordLogin)
+    //use lean to get only json
+    const user = await signUpTemplateCopy.findOne({username:usernameLogin}).lean()
+    if(!user){
+        return res.json({status:'error',error:'Invalid username/password'})
+    }
+    if(await bcrypt.compare(passwordLogin,user.password)){
+        // the username and password is correct
+        const token = jwt.sign({
+            id:user._id,
+            username:user.usernameLogin
+        }, JWT_SECRET)
+        return res.json({status:'ok',data:token})
+    }
+    res.json({status:'ok'})
+
+});
 
 module.exports = router;

@@ -28,15 +28,15 @@ class QuickFilter extends React.Component {
       ];
       return(
         <section>
-            <div class="container">
+            <div className="container">
 
               {/* Title */}
-                <div class="section-title flex flex-jc-sb flex-ai-c">
-                    <h3 class="section-title__name left-side">
-                        <i class="fa fa-filter"></i>
+                <div className="section-title flex flex-jc-sb flex-ai-c">
+                    <h3 className="section-title__name left-side">
+                        <i className="fa fa-filter"></i>
                         Quick Filter
                     </h3>
-                    <Link to="/" class=" link btn right-side">All Categories</Link>
+                    <Link to="/" className=" link btn right-side">All Categories</Link>
                 </div>
 
                {/* Item */}

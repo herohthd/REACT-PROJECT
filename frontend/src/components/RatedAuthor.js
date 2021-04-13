@@ -45,19 +45,19 @@ class RatedAuthor extends React.Component {
                     <RatedAuthorItem author={item.image}/>);
         return(
         <section>
-            <div class="container">
+            <div className="container">
 
             {/* Title */}
-                <div class="section-title flex flex-jc-sb flex-ai-c">
-                    <h3 class="section-title__name left-side">
-                        <i class="fa fa-star" aria-hidden="true"></i>
+                <div className="section-title flex flex-jc-sb flex-ai-c">
+                    <h3 className="section-title__name left-side">
+                        <i className="fa fa-star" aria-hidden="true"></i>
                         Top Rated Authors
                     </h3>
-                    <Link to="/" class="link btn right-side">All Top Rated Authors</Link>
+                    <Link to="/" className="link btn right-side">All Top Rated Authors</Link>
                 </div>
 
             {/* Item 1*/}
-                <div class="author-list flex flex-jc-sb flex-ai-c">
+                <div className="author-list flex flex-jc-sb flex-ai-c">
                     {authors};
                 </div>
                 
