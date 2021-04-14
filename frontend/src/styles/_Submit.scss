@@ -42,16 +42,8 @@
                 margin-bottom: 5px;
                 color: #676767;
               }
-              &__title{
-                font-weight: normal;
-                max-width: 100%;
-                margin-bottom: 5px;
-                color: #676767;
-                font-size:14px;
-              }
-              textarea{
-                  width:100%;
-                  background-color:#eee;
+              .textarea{
+                height:150px;
               }
               input {
                 border: none;
