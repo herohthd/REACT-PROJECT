@@ -46,8 +46,10 @@ class Login extends React.Component {
                 alert(response.data.error);
             }
             else {
-                console.log("Got the token",response.data);
+                console.log("Got the token",response.data.data.token);
+                localStorage.setItem("user", JSON.stringify(response.data.data))
                 alert('Login successfully');
+                window.location = '/';
             }
           })
           .catch(function (error) {
@@ -57,7 +59,6 @@ class Login extends React.Component {
             usernameLogin: '',
             passwordLogin: ''
         })
-        window.location = '/';
     }
 
     changeFullName(event){
