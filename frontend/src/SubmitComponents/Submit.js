@@ -77,7 +77,7 @@ class Login extends React.Component {
     onSubmit(event){
         event.preventDefault();
         
-        const registered = {
+        const recipe = {
             title: this.state.title,
             image: this.state.image,
             description: this.state.description,
@@ -88,14 +88,13 @@ class Login extends React.Component {
             numOfPeople: this.state.numOfPeople,
             times: this.state.times
         }
-
-        axios.post('http://localhost:4000/submitRecipes', registered)
+        axios.post('http://localhost:4000/submit', recipe)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){
                 alert(response.data.error);
             }
-            else alert('Register successfully');
+            else alert('Submit successfully');
           })
           .catch(function (error) {
             console.log(error);
@@ -142,28 +141,34 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <h4 className="form-group__title">Description</h4>
-                                    <textarea name="description" rows="8"
-                                    form="submit-form" required>
-                                    </textarea>
+                                    <label for="description">Description</label>
+                                    <input type="text"
+                                    onChange={this.changeDescription}
+                                    value={this.state.description}
+                                    className="textarea"
+                                    required></input>
                                 </div>
 
                                 <div className="form-group">
-                                    <h4 className="form-group__title">ingredients</h4>
-                                    <textarea name="ingredients" rows="8"
-                                    form="submit-form" required>
-                                    </textarea>
+                                    <label for="ingredients">Ingredients</label>
+                                    <input type="text"
+                                    onChange={this.changeIngredients}
+                                    value={this.state.ingredients}
+                                    className="textarea"
+                                    required></input>
                                 </div>
 
                                 <div className="form-group">
-                                    <h4 className="form-group__title">Steps</h4>
-                                    <textarea name="Steps" rows="8"
-                                    form="submit-form" required>
-                                    </textarea>
+                                    <label for="steps">Steps</label>
+                                    <input type="text"
+                                    onChange={this.changeSteps}
+                                    value={this.state.steps}
+                                    className="textarea"
+                                    required></input>
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="description">Difficulty</label>
+                                    <label for="difficulty">Difficulty</label>
                                     <input type="text"
                                     onChange={this.changeDifficulty}
                                     value={this.state.difficulty}
@@ -171,7 +176,15 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="description">Number of people</label>
+                                    <label for="yeild">Yeild</label>
+                                    <input type="text"
+                                    onChange={this.changeYeild}
+                                    value={this.state.yeild}
+                                    required></input>
+                                </div>
+
+                                <div className="form-group">
+                                    <label for="numOfPeople">Number of people</label>
                                     <input type="text"
                                     onChange={this.changeNumOfPeople}
                                     value={this.state.numOfPeople}
@@ -179,7 +192,7 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="description">Times</label>
+                                    <label for="times">Times</label>
                                     <input type="text"
                                     onChange={this.changeTimes}
                                     value={this.state.times}
