@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
-const signUpTemplate = new mongoose.Schema({
+const recipeTemplate = new mongoose.Schema({
     title:{
         type:String,
         required:true,
-        unique:true
     },
     image:{
         type:String,
@@ -26,7 +25,7 @@ const signUpTemplate = new mongoose.Schema({
         type:String,
         required:true
     },
-    yield:{
+    yeild:{
         type:String,
         required:true
     },
@@ -44,4 +43,4 @@ const signUpTemplate = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('recipes',signUpTemplate);
+module.exports = mongoose.model('recipes',recipeTemplate);
