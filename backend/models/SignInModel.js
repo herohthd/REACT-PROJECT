@@ -10,7 +10,7 @@ const signInTemplate= new mongoose.Schema({
         required:true
     },
     recipes:{
-
+            
     },
     date:{
         type:Date,

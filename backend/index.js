@@ -23,6 +23,9 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/',routesHandler);
 
+const authorRoutes = require('./routes/authorRoutes');
+app.use('/api/authors', authorRoutes)
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

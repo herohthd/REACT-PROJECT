@@ -7,6 +7,7 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Login from './LoginComponents/Login'
 import Submit from './SubmitComponents/Submit';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Members from './MemberComponents/Members.js';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Route path="/Register" exact component ={Login}/> 
       <Route path="/Login" exact component ={Login}/> 
       <Route path="/Submit" exact component ={Submit}/> 
+      <Route path="/members" exact component ={Members}></Route>
     </Switch>
     </Router>
   </React.StrictMode>,
