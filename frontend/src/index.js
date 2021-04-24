@@ -6,6 +6,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Login from './LoginComponents/Login'
 import Submit from './SubmitComponents/Submit';
+import Recipe from './RecipesComponents/Recipe'
+import RecipeItem from './RecipesComponents/RecipeItem'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +17,8 @@ ReactDOM.render(
       <Route path="/Register" exact component ={Login}/> 
       <Route path="/Login" exact component ={Login}/> 
       <Route path="/Submit" exact component ={Submit}/> 
+      <Route path='/recipes' exact component={Recipe}/>
+      <Route path='/recipes/:id' exact component={RecipeItem}/>
     </Switch>
     </Router>
   </React.StrictMode>,

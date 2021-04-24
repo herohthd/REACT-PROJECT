@@ -1,9 +1,20 @@
 const mongoose = require('mongoose');
-
 const recipeTemplate = new mongoose.Schema({
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'users'
+    },
+    category:{
+        type:String,
+        required:true
+    },
+    cuisine:{
+        type:String,
+        required:true
+    },
     title:{
         type:String,
-        required:true,
+        required:true
     },
     image:{
         type:String,
@@ -14,11 +25,11 @@ const recipeTemplate = new mongoose.Schema({
         required:true
     },
     ingredients:{
-        type:String,
+        type:[String],
         required:true
     },
     steps:{
-        type:String,
+        type:[String],
         required:true
     },
     difficulty:{

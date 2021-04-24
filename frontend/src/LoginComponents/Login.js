@@ -11,9 +11,11 @@ class Login extends React.Component {
             fullname: '',
             username: '',
             password: '',
+            avatar: '',
             usernameLogIn: '',
             passwordLogIn: ''
         }
+        this.changeAvatar = this.changeAvatar.bind(this);
         this.changeFullName = this.changeFullName.bind(this);
         this.changeUserName = this.changeUserName.bind(this);
         this.changePassword = this.changePassword.bind(this);
@@ -21,6 +23,11 @@ class Login extends React.Component {
         this.changePasswordLogIn = this.changePasswordLogIn.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onSubmitLogin = this.onSubmitLogin.bind(this);
+    }
+    changeAvatar(event){
+        this.setState({
+            avatar:event.target.value
+        })
     }
     changeUserNameLogIn(event){
         this.setState({
@@ -82,7 +89,8 @@ class Login extends React.Component {
         const registered = {
             fullname: this.state.fullname,
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            avatar: this.state.avatar
         }
 
         axios.post('http://localhost:4000/register', registered)
@@ -100,7 +108,8 @@ class Login extends React.Component {
         this.setState({
             fullname: '',
             username: '',
-            password: ''
+            password: '',
+            avatar: '',
         })
     }
     render(){
@@ -136,6 +145,14 @@ class Login extends React.Component {
                                     <input type="password"
                                     onChange={this.changePassword}
                                     value={this.state.password}
+                                    required></input>
+                                </div>
+
+                                <div className="form-group">
+                                    <label for="avatar">Avatar</label>
+                                    <input type="text"
+                                    onChange={this.changeAvatar}
+                                    value={this.state.avatar}
                                     required></input>
                                 </div>
 

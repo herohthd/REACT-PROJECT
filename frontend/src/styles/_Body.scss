@@ -81,11 +81,12 @@ section {
       }
     }
     .recipe-list {
-      margin-top: 50px;
       margin-left: -15px;
       margin-right: -15px;
       font-weight: 700;
+      flex-wrap:wrap;
       &__item {
+        margin-top:50px;
         width: 33.333%;
         position: relative;
         min-height: 1px;
@@ -106,6 +107,7 @@ section {
           }
         }
         .recipe-description {
+          min-height:200px;
           padding: 25px;
           background-color: #fff;
           margin-top: -5px;
@@ -160,6 +162,7 @@ section {
         }
       }
       .favourited-list__item {
+        margin-top: 50px;
         position: relative;
         min-height: 1px;
         padding-left: 15px;

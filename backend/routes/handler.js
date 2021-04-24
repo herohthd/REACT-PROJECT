@@ -10,13 +10,14 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = "WEBPROGRAMMING GROUP3"
 
 router.post('/register', async(req,res) => {
-    const {fullname,username,password:securePassword} = req.body
+    const {fullname,username,password:securePassword,avatar} = req.body
     const password = await bcrypt.hash(securePassword,10)
     try {
         const response = await signUpTemplateCopy.create({
             fullname,
             username,
-            password
+            password,
+            avatar
         })
         console.log("Register successfully",response)
     }
@@ -54,16 +55,19 @@ router.post('/login', async(req,res) => {
 });
 
 router.post('/submit', async(req,res) => {
-    const {title,image,description,
+    const {user,title,cuisine,category,image,description,
         ingredients,steps,difficulty,
         yeild,numOfPeople,times} = req.body
         try {
             const response = await recipeTemplateCopy.create({
+                user:user,
                 title,
+                cuisine,
+                category,
                 image,
                 description,
-                ingredients,
-                steps,
+                ingredients:ingredients,
+                steps:steps,
                 difficulty,
                 yeild,
                 numOfPeople,
@@ -76,5 +80,18 @@ router.post('/submit', async(req,res) => {
             return res.json({status:'error',error:'Cannot submit recipe'})
         }
         res.json({status:'ok'})
+})
+
+router.get('/recipes', async(req,res) => {
+    const recipes = await recipeTemplateCopy.find({}).populate("user").exec((err,recipeData) => {
+        if(err) throw err;
+        if(recipeData) {
+            // console.log(JSON.stringify(recipeData));
+            res.end(JSON.stringify(recipeData));
+        } else{
+            console.log("cant read");
+            res.end();
+        }
+    })
 })
 module.exports = router;

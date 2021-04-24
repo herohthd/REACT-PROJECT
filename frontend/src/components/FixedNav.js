@@ -49,7 +49,7 @@ const FixedNav = () => {
                             <a className="nav-link" href="/">Home</a>
                         </li>
                         <li className="nav-item" active>
-                            <a className="nav-link" href="/recipies">Recipies</a>
+                            <a className="nav-link" href="/recipes">Recipes</a>
                         </li>
                         <li className="nav-item" active>
                             <a className="nav-link" href="/members">Members</a>

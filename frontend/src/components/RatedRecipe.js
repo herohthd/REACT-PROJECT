@@ -54,26 +54,26 @@ class RatedRecipe extends React.Component {
             foodTitles={item.foodTitles} foodDescriptions={item.foodDescriptions} 
             difficulty={item.difficulty} yeild={item.yeild} 
             numOfPeople={item.numOfPeople} times={item.times}/>);
-    return(
-        <section>
-            <div className="container">
+        return(
+            <section>
+                <div className="container">
 
-              {/* Title */}
-                <div className="section-title flex flex-jc-sb flex-ai-c">
-                    <h3 className="section-title__name left-side">
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        Top Rated Recipes
-                    </h3>
-                    <Link to="/" className="link btn right-side">All Top Rated Recipes</Link>
-                </div>
+                {/* Title */}
+                    <div className="section-title flex flex-jc-sb flex-ai-c">
+                        <h3 className="section-title__name left-side">
+                            <i className="fa fa-star" aria-hidden="true"></i>
+                            Top Rated Recipes
+                        </h3>
+                        <Link to="/" className="link btn right-side">All Top Rated Recipes</Link>
+                    </div>
 
-               {/* Item */}
-                <div className="recipe-list flex flex-jc-sb flex-ai-c">
-                    {RatedRecipes};
+                {/* Item */}
+                    <div className="recipe-list flex flex-jc-sb flex-ai-c">
+                        {RatedRecipes};
+                    </div>
                 </div>
-            </div>
-        </section>
-      );
+            </section>
+        );
     }
   }
   

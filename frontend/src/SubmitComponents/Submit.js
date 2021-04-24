@@ -3,11 +3,15 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import FixedNav from '../components/FixedNav'
 import axios from 'axios'
+import AuthService from "../AuthComponents/authService"
 import '../styles/_Submit.scss'
 class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            user:AuthService.getCurrentUser().id,
+            category: '',
+            cuisine:'',
             title: '',
             image: '',
             description: '',
@@ -18,6 +22,8 @@ class Login extends React.Component {
             numOfPeople: '',
             times: '',
         }
+        this.changeCuisine = this.changeCuisine.bind(this);
+        this.changeCategory = this.changeCategory.bind(this);
         this.changeTitle = this.changeTitle.bind(this);
         this.changeImage = this.changeImage.bind(this);
         this.changeDescription = this.changeDescription.bind(this);
@@ -28,6 +34,16 @@ class Login extends React.Component {
         this.changeNumOfPeople = this.changeNumOfPeople.bind(this);
         this.changeTimes = this.changeTimes.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+    changeCategory(event){
+        this.setState({
+            category:event.target.value
+        })
+    }
+    changeCuisine(event){
+        this.setState({
+            cuisine:event.target.value
+        })
     }
     changeTitle(event){
         this.setState({
@@ -76,13 +92,17 @@ class Login extends React.Component {
     }
     onSubmit(event){
         event.preventDefault();
-        
+        this.state.ingredients.trim();
+        this.state.steps.trim();
         const recipe = {
+            user: this.state.user,
             title: this.state.title,
+            cuisine: this.state.cuisine,
+            category: this.state.category,
             image: this.state.image,
             description: this.state.description,
-            ingredients: this.state.ingredients,
-            steps: this.state.steps,
+            ingredients: this.state.ingredients.split(" "),
+            steps: this.state.steps.split(" "),
             difficulty: this.state.difficulty,
             yeild: this.state.yeild,
             numOfPeople: this.state.numOfPeople,
@@ -102,6 +122,8 @@ class Login extends React.Component {
         // window.location = '/';
         this.setState({
             title:'',
+            cuisine: '',
+            category: '',
             image:'',
             description:'',
             ingredients:'',
@@ -129,6 +151,22 @@ class Login extends React.Component {
                                     <input type="text"
                                     onChange={this.changeTitle}
                                     value={this.state.title}
+                                    required></input>
+                                </div>
+
+                                <div className="form-group">
+                                    <label for="title">Category</label>
+                                    <input type="text"
+                                    onChange={this.changeCategory}
+                                    value={this.state.category}
+                                    required></input>
+                                </div>
+
+                                <div className="form-group">
+                                    <label for="title">Cuisine</label>
+                                    <input type="text"
+                                    onChange={this.changeCuisine}
+                                    value={this.state.cuisine}
                                     required></input>
                                 </div>
 

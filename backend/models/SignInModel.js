@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const RecipesTemplateCopy = require('./RecipesModel')
 const signInTemplate= new mongoose.Schema({
     username:{
         type:String,
@@ -8,9 +7,6 @@ const signInTemplate= new mongoose.Schema({
     password:{
         type:String,
         required:true
-    },
-    recipes:{
-
     },
     date:{
         type:Date,
