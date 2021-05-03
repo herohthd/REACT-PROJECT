@@ -8,6 +8,7 @@ import Login from './LoginComponents/Login'
 import Submit from './SubmitComponents/Submit';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Members from './MemberComponents/Members.js';
+import Author from './MemberComponents/Author.js';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route path="/Login" exact component ={Login}/> 
       <Route path="/Submit" exact component ={Submit}/> 
       <Route path="/members" exact component ={Members}></Route>
+      <Route path="/author" exact component ={Author}/> 
     </Switch>
     </Router>
   </React.StrictMode>,

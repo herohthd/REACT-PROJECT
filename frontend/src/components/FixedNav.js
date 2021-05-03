@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Route, Router } from 'react-router';
 import "../styles/style.scss"
-import members from "../MemberComponents/Members.js";
 
 const FixedNav = () => {
     const [show, setShow] = useState(false);
