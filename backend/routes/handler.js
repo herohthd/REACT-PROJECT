@@ -51,7 +51,7 @@ router.post('/login', async(req,res) => {
             token:token
         }})
     }
-    res.json({status:'ok'})
+    res.json({status:'error',error:'Invalid username/password'})
 });
 
 router.post('/submit', async(req,res) => {
@@ -73,11 +73,29 @@ router.post('/submit', async(req,res) => {
                 numOfPeople,
                 times
             })
-            console.log("Submit successfully",response)
+            const response1 = await signUpTemplateCopy.findByIdAndUpdate(user,{
+                $push: { recipes: response._id }
+            })
+            console.log("Submit successfully",response,response1)
         }
         catch (error) {
             console.log(error.message)
             return res.json({status:'error',error:'Cannot submit recipe'})
+        }
+        res.json({status:'ok'})
+})
+
+router.post('/addFavourited', async(req,res) => {
+    const {recipeID,userID} = req.body
+        try {
+            const response = await signUpTemplateCopy.findByIdAndUpdate(userID,{
+                $push: { favouritedRecipes: recipeID }
+            })
+            console.log("Add to favourited list successfully",response)
+        }
+        catch (error) {
+            console.log(error.message)
+            return res.json({status:'error',error:'Cannot add to favourited list'})
         }
         res.json({status:'ok'})
 })
@@ -89,7 +107,34 @@ router.get('/recipes', async(req,res) => {
             // console.log(JSON.stringify(recipeData));
             res.end(JSON.stringify(recipeData));
         } else{
-            console.log("cant read");
+            console.log("cant read recipe");
+            res.end();
+        }
+    })
+})
+
+router.get('/members', async(req,res) => {
+    const members = await signUpTemplateCopy.find({}).populate('recipes').populate('favouritedRecipes').exec((err,memberData) => {
+        if(err) throw err;
+        if(memberData) {
+            // console.log(JSON.stringify(memberData));
+            res.end(JSON.stringify(memberData));
+        } else{
+            console.log("cant read member");
+            res.end();
+        }
+    })
+})
+
+router.get('/members/:id',async(req,res) => {
+    // console.log(req.params.id)
+    const member = await signUpTemplateCopy.findById(req.params.id).populate('recipes').populate('favouritedRecipes').exec((err,memberData) => {
+        if(err) throw err;
+        if(memberData) {
+            // console.log(JSON.stringify(memberData));
+            res.end(JSON.stringify(memberData));
+        } else{
+            console.log("cant read member");
             res.end();
         }
     })

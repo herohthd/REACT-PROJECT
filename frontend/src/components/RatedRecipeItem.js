@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 class RatedRecipeItem extends React.Component {
     render() {
         const recipeInfor = {
+            id:this.props.id,
             pathname: '/recipes/'+this.props.id,
             image:this.props.images,
             title:this.props.foodTitles,
@@ -17,7 +18,8 @@ class RatedRecipeItem extends React.Component {
             cuisine:this.props.cuisine,
             category:this.props.category,
             ingredients:this.props.ingredients,
-            steps:this.props.steps
+            steps:this.props.steps,
+            date:this.props.date
         };
         return(
             <div className="recipe-list__item">

@@ -7,24 +7,49 @@ class Nav extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currentUser: undefined
+      currentUser: undefined,
+      authorInfor: undefined
     };
     this.logOut = this.logOut.bind(this);
   }
   componentDidMount() {
     const user = AuthService.getCurrentUser();
     if (user) {
-      this.setState({
-        currentUser: user
+      const pathname = 'http://localhost:4000/members/'+AuthService.getCurrentUser().id;
+      console.log(pathname);
+      fetch(pathname).then(response => response.json()).then(data => {
+        const newDate = new Date(data.date);
+          // console.log(newDate);
+        const day = newDate.getDate();
+        const month = newDate.getMonth()+1;
+        const year = newDate.getFullYear();
+        console.log(day,month,year);
+        data.date = day+'-'+month+'-'+year;
+        const authorInfor = {
+          pathname: 'members/'+AuthService.getCurrentUser().id,
+          avatar:data.avatar,
+          fullname:data.fullname,
+          username:data.username,
+          favouritedRecipes:data.favouritedRecipes,
+          recipes:data.recipes,
+          date:data.date
+          }
+          // console.log(authorInfor);
+          this.setState({
+          currentUser: user,
+          authorInfor: authorInfor
+          });
+        // }
       });
     }
   }
   logOut() {
     AuthService.logout();
   }
-  render() {
+  render() {  
     const currentUser = this.state.currentUser;
-    console.log(currentUser);
+    const authorInfor = this.state.authorInfor;
+    // console.log(currentUser);
     return(
       <nav className="flex flex-jc-sa flex-ai-c">
         <div>
@@ -35,7 +60,7 @@ class Nav extends React.Component {
           </div>
           {currentUser ? (
           <div className="nav__menu flex flex-ai-c">
-            <div className="nav__menu-item"><Link to='/'><i className="fa fa-user" aria-hidden="true"></i>
+            <div className="nav__menu-item"><Link to={authorInfor}><i className="fa fa-user" aria-hidden="true"></i>
                             <span>HI {currentUser.username}</span></Link></div>
             <div className="nav__menu-item"><Link to='/Login' onClick={this.logOut}><i className="fa fa-sign-in" aria-hidden="true"></i>
                             <span>LOG OUT</span></Link></div>

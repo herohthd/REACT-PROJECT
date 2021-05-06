@@ -12,11 +12,19 @@ const signUpTemplate = new mongoose.Schema({
     },
     password:{
         type:String,
-        required:true
+        required:true 
     },
     avatar:{
         type:String,
         required:true
+    },
+    favouritedRecipes:{
+        type:[mongoose.Schema.Types.ObjectId],
+        ref:'recipes'
+    },
+    recipes:{
+        type:[mongoose.Schema.Types.ObjectId],
+        ref:'recipes'
     },
     date:{
         type:Date,

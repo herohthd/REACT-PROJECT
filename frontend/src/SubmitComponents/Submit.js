@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
-import FixedNav from '../components/FixedNav'
+import FixedNav2 from '../components/FixedNav2'
 import axios from 'axios'
 import AuthService from "../AuthComponents/authService"
 import '../styles/_Submit.scss'
@@ -138,7 +138,7 @@ class Login extends React.Component {
         return(
             <section className="submit-section">
                 <Nav/>
-                <FixedNav/>
+                <FixedNav2/>
                 <div className="form-container">
                     <div className="form-outer">
 

@@ -48,6 +48,9 @@ const recipeTemplate = new mongoose.Schema({
         type:String,
         required:true
     },
+    numOfLike:{
+        type:Number,
+    },
     date:{
         type:Date,
         default:Date.now

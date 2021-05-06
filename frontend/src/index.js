@@ -8,6 +8,8 @@ import Login from './LoginComponents/Login'
 import Submit from './SubmitComponents/Submit';
 import Recipe from './RecipesComponents/Recipe'
 import RecipeItem from './RecipesComponents/RecipeItem'
+import Author from './MemberComponents/Author'
+import Members from './MemberComponents/Member'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +21,8 @@ ReactDOM.render(
       <Route path="/Submit" exact component ={Submit}/> 
       <Route path='/recipes' exact component={Recipe}/>
       <Route path='/recipes/:id' exact component={RecipeItem}/>
+      <Route path="/members" exact component ={Members}/>
+      <Route path="/members/:id" exact component ={Author}/> 
     </Switch>
     </Router>
   </React.StrictMode>,
