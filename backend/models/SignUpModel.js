@@ -26,6 +26,10 @@ const signUpTemplate = new mongoose.Schema({
         type:[mongoose.Schema.Types.ObjectId],
         ref:'recipes'
     },
+    numOfLike:{
+        type:Number,
+        default:0
+    },
     date:{
         type:Date,
         default:Date.now
