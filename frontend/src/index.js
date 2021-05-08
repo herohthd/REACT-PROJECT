@@ -14,16 +14,16 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <Switch>
-      <Route exact path = "/" component={App}/>
-      <Route path="/Register" exact component ={Login}/> 
-      <Route path="/Login" exact component ={Login}/> 
-      <Route path="/Submit" exact component ={Submit}/> 
-      <Route path='/recipes' exact component={Recipe}/>
-      <Route path='/recipes/:id' exact component={RecipeItem}/>
-      <Route path="/members" exact component ={Members}/>
-      <Route path="/members/:id" exact component ={Author}/> 
-    </Switch>
+      <Switch>
+        <Route exact path = "/" component={App}/>
+        <Route path="/Register" exact component ={Login}/> 
+        <Route path="/Login" exact component ={Login}/> 
+        <Route path="/Submit" exact component ={Submit}/> 
+        <Route path='/recipes' exact component={Recipe}/>
+        <Route path='/recipes/:id' exact component={RecipeItem}/>
+        <Route path="/members" exact component ={Members}/>
+        <Route path="/members/:id" exact component ={Author}/> 
+      </Switch>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link,withRouter} from 'react-router-dom';
 import hatChef from '../img/hatChef.png'
 import "../styles/style.scss"
 import AuthService from "../AuthComponents/authService"
@@ -14,6 +14,7 @@ class Nav extends React.Component {
   }
   componentDidMount() {
     const user = AuthService.getCurrentUser();
+    // console.log(this.props.location.pathname);
     if (user) {
       const pathname = 'http://localhost:4000/members/'+AuthService.getCurrentUser().id;
       console.log(pathname);
@@ -23,21 +24,22 @@ class Nav extends React.Component {
         const day = newDate.getDate();
         const month = newDate.getMonth()+1;
         const year = newDate.getFullYear();
-        console.log(day,month,year);
+        // console.log(day,month,year);
         data.date = day+'-'+month+'-'+year;
         const authorInfor = {
-          pathname: 'members/'+AuthService.getCurrentUser().id,
-          avatar:data.avatar,
-          fullname:data.fullname,
-          username:data.username,
-          favouritedRecipes:data.favouritedRecipes,
-          recipes:data.recipes,
-          date:data.date
+          id:AuthService.getCurrentUser().id,
+          pathname: '/members/'+AuthService.getCurrentUser().id,
+          // avatar:data.avatar,
+          // fullname:data.fullname,
+          // username:data.username,
+          // favouritedRecipes:data.favouritedRecipes,
+          // recipes:data.recipes,
+          // date:data.date
           }
-          // console.log(authorInfor);
+          console.log(authorInfor.pathname);
           this.setState({
-          currentUser: user,
-          authorInfor: authorInfor
+            currentUser: user,
+            authorInfor: authorInfor
           });
         // }
       });
@@ -80,4 +82,4 @@ class Nav extends React.Component {
   }
 }
   
-export default Nav;
+export default withRouter(Nav);

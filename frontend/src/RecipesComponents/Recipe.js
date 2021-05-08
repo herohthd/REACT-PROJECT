@@ -20,9 +20,9 @@ function Recipe(){
             const day = newDate.getDate();
             const month = newDate.getMonth()+1;
             const year = newDate.getFullYear();
-            console.log(day,month,year);
+            // console.log(day,month,year);
             item.date = day+'-'+month+'-'+year;
-            console.log(item.date);
+            console.log(item);
         });
         setItems(items);
     };
@@ -36,13 +36,13 @@ function Recipe(){
                 {
                 items.map(item => 
                     <RatedRecipeItem id={item._id} images={item.image} 
+                    authorID={item.user._id} date={item.date}
                     avatars={item.user.avatar} authorsName={item.user.fullname} 
                     foodTitles={item.title} foodDescriptions={item.description} 
                     difficulty={item.difficulty} yeild={item.yeild} 
                     numOfPeople={item.numOfPeople} times={item.times}
                     cuisine={item.cuisine} category={item.category}
-                    ingredients={item.ingredients} steps={item.steps}
-                    date={item.date}/>
+                    ingredients={item.ingredients} steps={item.steps}/>
                 )
                 }
                 </div>

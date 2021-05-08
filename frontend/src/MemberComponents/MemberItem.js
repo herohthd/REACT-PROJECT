@@ -5,12 +5,14 @@ class MemberItem extends React.Component {
     render() {
         const memberInfor = {
             pathname: '/members/'+this.props.id,
-            avatar:this.props.avatar,
-            fullname:this.props.fullname,
-            username:this.props.username,
-            favouritedRecipes:this.props.favouritedRecipes,
-            recipes:this.props.recipes,
-            date:this.props.date
+            id:this.props.id,
+            recipesID:this.props.recipes,
+            // avatar:this.props.avatar,
+            // fullname:this.props.fullname,
+            // username:this.props.username,
+            // recipes:this.props.recipes,
+            // favouritedRecipes:this.props.favouritedRecipes,
+            // date:this.props.date
         };
         return(
             <div className="col-md-4">

@@ -8,7 +8,7 @@ const FixedNav = () => {
     let navbarClasses = 'navbar navbar-expand-md navbar-light';
 
     const handleScroll = () => {
-        if ( window.scrollY > 556 ){
+        if ( window.scrollY > 700 ){
             setShow(true);
         }
         else {

@@ -20,15 +20,15 @@ class FavouritedItem extends React.Component {
                         <li><img src={this.props.avatars} alt={this.props.authorsName}></img>
                                 By              
                             <Link to="/" className="link">  {this.props.authorsName}</Link></li>
-                            {this.props.difficulty&&<li>{this.props.difficulty}</li>}
-                            {this.props.yeild&&<li><i className="fa fa-table"></i>  {this.props.yeild}</li>}
-                            {this.props.numOfPeople&&<li><i className="fa fa-users"></i>  {this.props.numOfPeople}</li>}
-                            {this.props.times && <li><i className="fa fa-clock-o" aria-hidden="true"></i>  {this.props.times}</li>}
+                            {this.props.difficulty&&<li title="Diffculty">{this.props.difficulty}</li>}
+                            {this.props.yeild&&<li  title="Yeild"><i className="fa fa-table"></i>  {this.props.yeild}</li>}
+                            {this.props.numOfPeople&&<li title="Number of people"><i className="fa fa-users"></i>  {this.props.numOfPeople}</li>}
+                            {this.props.times && <li title="Time"><i className="fa fa-clock-o" aria-hidden="true"></i>  {this.props.times}</li>}
                     </ul>
                 </div>
             </div>
         </div>
-    );
+    )
     }
 }
 export default FavouritedItem;

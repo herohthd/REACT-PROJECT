@@ -1,46 +1,38 @@
 import React from 'react';
 import "../styles/style.scss"
 import {Link} from 'react-router-dom';
-import strawberryCake from '../img/strawberryCake.png'
-import GordonRamsay from '../img/GordonRamsay.png'
-import phobo from '../img/phobo.png'
-import ChristineHa from '../img/ChristineHa.png'
 import FavouritedItem from './FavouritedItem'
 class Favourited extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          recipes: [
-            {
-                images: strawberryCake,
-                avatars: GordonRamsay,
-                authorsName:"Gordon Ramsay",
-                foodTitles:"Creamy Strawberry Crepes",
-                foodDescriptions:"This recipe has been a family favorite for over 30 years! These crepes are delicious and very rich! Be sure you have at least 1 hour to prepare.",
-                difficulty:"Easy",
-                yeild:"Few dozen",
-                numOfPeople:"1 person",
-                times:"30min"
-            },
-            {
-                images: phobo,
-                avatars: ChristineHa,
-                authorsName:"Christine Ha",
-                foodTitles:"Pho bo Viet Nam",
-                foodDescriptions:"Vietnamese Beef Noodle (Phở Bò) is one of the most popular dish in Vietnam.Vietnamese Beef Noodle is the combination of broth, rice noodles (Bánh Phở)...",
-                difficulty:"Medium",
-                yeild:"Few dozen",
-                numOfPeople:"2 people",
-            },
-          ]
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: undefined,
+      dataIsReturned :false
+    };
+  }
+  async componentDidMount(){
+    const pathname = 'http://localhost:4000/favouritedRecipes';
+    // console.log(pathname);
+    const data = await fetch(pathname);
+    const latestRecipes = await data.json();
+    // console.log(latestRecipes);
+    this.setState({
+        recipes:latestRecipes,
+        dataIsReturned:true
+    })  
+    // console.log(this.state.recipes)
+  }
     render() {
-        let FavouritedRecipes = this.state.recipes.map(item=><FavouritedItem images={item.images} 
-            avatars={item.avatars} authorsName={item.authorsName} 
-            foodTitles={item.foodTitles} foodDescriptions={item.foodDescriptions} 
-            difficulty={item.difficulty} yeild={item.yeild} 
-            numOfPeople={item.numOfPeople} times={item.times}/>);
+      const dataIsReturned = this.state.dataIsReturned;
+      if(!dataIsReturned){
+        return <div>LOADING...</div>
+      }
+      let FavouritedRecipes = this.state.recipes.map(item=><FavouritedItem images={item.image} 
+        avatars={item.user.avatar} authorsName={item.user.fullname} 
+        foodTitles={item.title} foodDescriptions={item.description} 
+        difficulty={item.difficulty} yeild={item.yeild} 
+        numOfPeople={item.numOfPeople} times={item.times}
+        authorID={item.user._id} recipeID={item._id}/>);
       return(
         <section>
             <div className="container">
@@ -56,7 +48,7 @@ class Favourited extends React.Component {
 
                {/* Item */}
                 <div className="recipe-list flex flex-jc-sb flex-ai-c">
-                   {FavouritedRecipes};
+                   {FavouritedRecipes}
                 </div>   
             </div>
         </section>

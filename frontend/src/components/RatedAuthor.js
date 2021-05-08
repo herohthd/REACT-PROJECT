@@ -2,47 +2,34 @@ import React from 'react';
 import "../styles/style.scss"
 import {Link} from 'react-router-dom';
 import RatedAuthorItem from './RatedAuthorItem'
-import GordonRamsay from '../img/GordonRamsay.png'
-import ChristineHa from '../img/ChristineHa.png'
-import AntonioCarluccio from '../img/AntonioCarluccio.png'
-import LukeNguyen from '../img/LukeNguyen.png'
-import HungHuynh from '../img/HungHuynh.png'
-import Ray from '../img/Ray.png'
+
 class RatedAuthor extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            authors: [
-                {
-                    name:"Gordon Ramsay",
-                    image:GordonRamsay
-                },
-                {
-                    name:"Christine Ha",
-                    image:ChristineHa                
-                },
-                {
-                    name:"Antonio Carluccio",
-                    image:AntonioCarluccio
-                },
-                {
-                    name:"Luke Nguyen",
-                    image:LukeNguyen
-                },
-                {
-                    name:"Hung Huynh",
-                    image:HungHuynh
-                },
-                {
-                    name:"Ray",
-                    image:Ray
-                },
-            ]
-        }
+          authors: undefined,
+          dataIsReturned :false
+        };
+    }
+    async componentDidMount(){
+      const pathname = 'http://localhost:4000/ratedAuthors';
+      // console.log(pathname);
+      const data = await fetch(pathname);
+      const ratedAuthors = await data.json();
+      // console.log(latestRecipes);
+      this.setState({
+          authors:ratedAuthors,
+          dataIsReturned:true
+      })  
+      console.log(this.state.authors)
     }
     render() {
+        const dataIsReturned = this.state.dataIsReturned;
+        if(!dataIsReturned){
+          return <div>LOADING...</div>
+        }
         let authors = this.state.authors.map(item=>
-                    <RatedAuthorItem author={item.image}/>);
+                    <RatedAuthorItem authorImage={item.avatar} authorName={item.fullname}/>);
         return(
         <section>
             <div className="container">
@@ -53,7 +40,7 @@ class RatedAuthor extends React.Component {
                         <i className="fa fa-star" aria-hidden="true"></i>
                         Top Rated Authors
                     </h3>
-                    <Link to="/" className="link btn right-side">All Top Rated Authors</Link>
+                    <Link to="/members/" className="link btn right-side">All Top Rated Authors</Link>
                 </div>
 
             {/* Item 1*/}

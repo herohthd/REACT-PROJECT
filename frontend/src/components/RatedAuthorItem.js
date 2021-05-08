@@ -6,7 +6,7 @@ class RatedAuthorItem extends React.Component {
         return(
         <div className="author-list__item">
             <Link to="/" className="link">
-                <img className="author__img" src={this.props.author} alt="{this.props.author}"></img>
+                <img className="author__img" src={this.props.authorImage} alt={this.props.authorName} title={this.props.authorName}></img>
             </Link>
         </div>
         );

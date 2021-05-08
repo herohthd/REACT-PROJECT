@@ -25,7 +25,7 @@ const Members = () => {
             const year = newDate.getFullYear();
             console.log(day,month,year);
             item.date = day+'-'+month+'-'+year;
-            console.log(item.date);
+            // console.log(item.date);
         });
         setItems(items);
     };
