@@ -50,6 +50,11 @@ const recipeTemplate = new mongoose.Schema({
     },
     numOfLike:{
         type:Number,
+        default:0
+    },
+    numOfFavourited:{
+        type:Number,
+        default:0
     },
     date:{
         type:Date,
