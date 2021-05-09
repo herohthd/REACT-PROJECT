@@ -92,6 +92,12 @@ const Members = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="pagination">
+                        <span aria-current="page" className="page-numbers current">1</span>
+                        <a className="page-numbers" href="http://localhost:3000/members/paged=2">2</a>
+                        <a className="page-numbers" href="http://localhost:3000/members/paged=3">3</a>
+                        <span className="page-numbers dots">...</span>
+                    </div>
                 </div>
                 
             </div>
