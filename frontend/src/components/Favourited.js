@@ -27,6 +27,10 @@ class Favourited extends React.Component {
       if(!dataIsReturned){
         return <div>LOADING...</div>
       }
+      let recipeFilter = {
+        pathname :"/recipes/",
+        sort:"Most favourited"
+      }
       let FavouritedRecipes = this.state.recipes.map(item=><FavouritedItem images={item.image} 
         avatars={item.user.avatar} authorsName={item.user.fullname} 
         foodTitles={item.title} foodDescriptions={item.description} 
@@ -43,7 +47,7 @@ class Favourited extends React.Component {
                         <i className="fa fa-clock-o" aria-hidden="true"></i>
                         Most Favourited Recipes
                     </h3>
-                    <Link to="/" className="link btn right-side">All Most Favourited Recipes</Link>
+                    <Link to={recipeFilter} className="link btn right-side">All Most Favourited Recipes</Link>
                 </div>
 
                {/* Item */}

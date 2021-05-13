@@ -19,13 +19,13 @@
         font-size: 14px;
         font-weight: 600;
         padding: 15px 0;
-        margin:14px 0;
-        padding:0;
+        margin: 14px 0;
+        padding: 0;
       }
       ul {
         list-style: none;
         color: #fff;
-        margin:14px 0;
+        margin: 14px 0;
         li {
           .link {
             i {
@@ -45,14 +45,14 @@
             .fa-google-plus:hover {
               color: red;
             }
-            .fa-instagram:hover{
-                color:red;
+            .fa-instagram:hover {
+              color: red;
             }
-            .fa-twitter:hover{
-                color:aqua;
+            .fa-twitter:hover {
+              color: aqua;
             }
-            .fa-youtube:hover{
-                color:rgb(152, 35, 35);
+            .fa-youtube:hover {
+              color: rgb(152, 35, 35);
             }
           }
         }
@@ -61,12 +61,12 @@
   }
 }
 @media only screen and (max-width: 600px) {
-  .App-footer{
-    .footer-container{
-      .footer-content{
+  .App-footer {
+    .footer-container {
+      .footer-content {
         flex-direction: column;
-        ul{
-          padding-left:0px;
+        ul {
+          padding-left: 0px;
         }
       }
     }

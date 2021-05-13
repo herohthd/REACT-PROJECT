@@ -40,8 +40,8 @@ const FixedNav = () => {
         <nav className={ effect ? navbarClasses + ' scrolled' : navbarClasses}>
             <div className="container">
                 <button className="navbar-toggler button-white-menu collapsed"  data-toggle="collapse" data-target="#navbarSupportedContent">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class ="fa fa-bars fa-3x"></i>
+                        <span className="sr-only">Toggle navigation</span>
+                        <i className ="fa fa-bars fa-3x"></i>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">

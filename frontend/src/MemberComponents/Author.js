@@ -2,8 +2,11 @@ import React from 'react'
 import Nav from '../components/Nav.js'
 import Footer from '../components/Footer'
 import FixedNav2 from '../components/FixedNav2'
+import axios from 'axios'
 import '../styles/style.scss'
 import {Link} from 'react-router-dom'
+import AuthService from "../AuthComponents/authService"
+
 class Author extends React.Component {
     constructor(props){
         super(props)
@@ -14,11 +17,13 @@ class Author extends React.Component {
         console.log(this.state);
     }
     async componentDidMount(){
-        console.log(this.props.location.id);
+        console.log("DID MOUNT")
+        // console.log(this.props.location.id);
         const pathname = 'http://localhost:4000/members/'+this.props.location.id;
         // console.log(pathname);
         const data = await fetch(pathname);
         const author = await data.json();
+        console.log(author);
         const newDate = new Date(author.date);
         // console.log(newDate);
         const day = newDate.getDate();
@@ -31,16 +36,19 @@ class Author extends React.Component {
             author:author,
             dataIsReturned:true
         })  
-        console.log(this.state)
+        // console.log(this.state)
     }
 
-    async componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps,prevState) {
         // Typical usage (don't forget to compare props):
-        if (this.props.location.id !== prevProps.location.id) {
+        const changeID = this.props.location.id !== prevProps.location.id; 
+        if (changeID || !this.state.dataIsReturned) {
+            console.log("DID UPDATE");
             const pathname = 'http://localhost:4000/members/'+this.props.location.id;
             // console.log(pathname);
             const data = await fetch(pathname);
             const author = await data.json();
+            console.log(author);
             const newDate = new Date(author.date);
             // console.log(newDate);
             const day = newDate.getDate();
@@ -53,8 +61,52 @@ class Author extends React.Component {
                 author:author,
                 dataIsReturned:true
             })  
-            // console.log(this.state)
         }
+    }
+    removeFavouritedRecipe(recipeID,userID){
+        const deleteRecipe = {
+            recipeID,
+            userID
+        }
+        console.log(deleteRecipe)
+        axios.post('http://localhost:4000/deleteFavourited', deleteRecipe)
+        .then(function (response) {
+            // console.log(response);
+            if(response.data.status === 'error'){
+                alert(response.data.error);
+            }
+            else alert('Delete successfully');
+        })
+          .catch(function (error) {
+            console.log(error);
+        });
+        this.setState({
+            // author: undefined,
+            dataIsReturned :false
+        })
+    }
+
+    removeRecipe(recipeID,userID){
+        const deleteRecipe = {
+            recipeID,
+            userID
+        }
+        console.log(deleteRecipe)
+        axios.post('http://localhost:4000/delete', deleteRecipe)
+        .then(function (response) {
+            // console.log(response);
+            if(response.data.status === 'error'){
+                alert(response.data.error);
+            }
+            else alert('Delete successfully');
+        })
+          .catch(function (error) {
+            console.log(error);
+        });
+        this.setState({
+            // author: undefined,
+            dataIsReturned :false
+        })
     }
 
     render() {
@@ -150,16 +202,12 @@ class Author extends React.Component {
                                                                 <thead>
                                                                     <tr>
                                                                         <th>
-                                                                            
-                                                                                <div className="th-inner">Image</div>
-                                                                                <div className="fht-cell"></div>
-                                                                           
+                                                                            <div className="th-inner">Image</div>
+                                                                            <div className="fht-cell"></div>
                                                                         </th>
                                                                         <th>
-                                                                            
                                                                             <div className="th-inner sortable">Name</div>
                                                                             <div className="fht-cell"></div>
-                                                                           
                                                                         </th>
                                                                         <th>
                                                                             <div className="th-inner">Category</div>
@@ -175,7 +223,7 @@ class Author extends React.Component {
                                                                     {
                                                                     author.recipes.map(recipe => {       
                                                                         const recipeInfor = {
-                                                                            pathname: 'recipes/'+recipe._id,
+                                                                            pathname: '/recipes/'+recipe._id,
                                                                             id:recipe._id
                                                                         };
                                                                         return  <tr className="no-records-found">
@@ -199,6 +247,12 @@ class Author extends React.Component {
                                                                                 <div className="th-inner">{recipe.difficulty}</div>
                                                                                 <div className="fht-cell"></div>
                                                                             </th>
+                                                                            {
+                                                                            AuthService.getCurrentUser().id === author._id &&
+                                                                            <button onClick={this.removeRecipe.bind(this,recipe._id,author._id)}>
+                                                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                            </button>
+                                                                            }
                                                                         </tr>                     
                                                                     }                                               
                                                                     )
@@ -258,7 +312,7 @@ class Author extends React.Component {
                                                                 {
                                                                     author.favouritedRecipes.map(recipe =>  {
                                                                         const recipeInfor = {
-                                                                            pathname: 'recipes/'+recipe._id,
+                                                                            pathname: '/recipes/'+recipe._id,
                                                                             id:recipe._id
                                                                         };          
                                                                         // console.log(recipeInfor);  
@@ -280,10 +334,17 @@ class Author extends React.Component {
                                                                                 <div className="th-inner">{recipe.category}</div>
                                                                                 <div className="fht-cell"></div>
                                                                             </th>
-                                                                            <th>
+                                                                            <th className="remove-group">
                                                                                 <div className="th-inner">{recipe.difficulty}</div>
-                                                                                <div className="fht-cell"></div>
+                                                                                <div className="fht-cell">
+                                                                                </div>
                                                                             </th>
+                                                                            {
+                                                                            AuthService.getCurrentUser().id === author._id &&
+                                                                            <button onClick={this.removeFavouritedRecipe.bind(this,recipe._id,author._id)}>
+                                                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                            </button>
+                                                                            }
                                                                         </tr>                                
                                                                     }                                
                                                                     )

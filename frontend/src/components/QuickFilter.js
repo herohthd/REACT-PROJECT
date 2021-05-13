@@ -18,9 +18,9 @@ class QuickFilter extends React.Component {
       const categories = [
         "Bervarages",
         "Breads",
-        "Hamburgers",
+        "Noodle",
         "Ice cream",
-        "Pizzas",
+        "Dessert",
         "Vegeterian",
         "Meat",
         "Fish",
@@ -36,7 +36,7 @@ class QuickFilter extends React.Component {
                         <i className="fa fa-filter"></i>
                         Quick Filter
                     </h3>
-                    <Link to="/" className=" link btn right-side">All Categories</Link>
+                    <Link to="/recipes" className=" link btn right-side">All Categories</Link>
                 </div>
 
                {/* Item */}

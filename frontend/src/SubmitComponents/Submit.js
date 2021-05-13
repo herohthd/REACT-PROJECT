@@ -101,8 +101,8 @@ class Login extends React.Component {
             category: this.state.category,
             image: this.state.image,
             description: this.state.description,
-            ingredients: this.state.ingredients.split(" "),
-            steps: this.state.steps.split(" "),
+            ingredients: this.state.ingredients.split("\n"),
+            steps: this.state.steps.split("\n"),
             difficulty: this.state.difficulty,
             yeild: this.state.yeild,
             numOfPeople: this.state.numOfPeople,
@@ -155,7 +155,7 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="title">Category</label>
+                                    <label for="category">Category</label>
                                     <input type="text"
                                     onChange={this.changeCategory}
                                     value={this.state.category}
@@ -163,7 +163,7 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="title">Cuisine</label>
+                                    <label for="cuisine">Cuisine</label>
                                     <input type="text"
                                     onChange={this.changeCuisine}
                                     value={this.state.cuisine}
@@ -180,29 +180,29 @@ class Login extends React.Component {
 
                                 <div className="form-group">
                                     <label for="description">Description</label>
-                                    <input type="text"
+                                    <textarea 
                                     onChange={this.changeDescription}
                                     value={this.state.description}
                                     className="textarea"
-                                    required></input>
+                                    required></textarea>
                                 </div>
 
                                 <div className="form-group">
                                     <label for="ingredients">Ingredients</label>
-                                    <input type="text"
+                                    <textarea 
                                     onChange={this.changeIngredients}
                                     value={this.state.ingredients}
                                     className="textarea"
-                                    required></input>
+                                    required></textarea>
                                 </div>
 
                                 <div className="form-group">
                                     <label for="steps">Steps</label>
-                                    <input type="text"
+                                    <textarea
                                     onChange={this.changeSteps}
                                     value={this.state.steps}
                                     className="textarea"
-                                    required></input>
+                                    required></textarea>
                                 </div>
 
                                 <div className="form-group">

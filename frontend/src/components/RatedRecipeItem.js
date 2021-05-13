@@ -4,34 +4,19 @@ import {Link} from 'react-router-dom';
 class RatedRecipeItem extends React.Component {
     render() {
         const recipeInfor = {
-            id:this.props.id,
-            pathname: '/recipes/'+this.props.id,
-            // authorID: this.props.authorID,
-            // image:this.props.images,
-            // title:this.props.foodTitles,
-            // description:this.props.foodDescriptions,
-            // avatar:this.props.avatars,
-            // authorName:this.props.authorsName,
-            // difficulty:this.props.difficulty,
-            // yeild:this.props.yeild,
-            // numOfPeople:this.props.numOfPeople,
-            // times:this.props.times,
-            // cuisine:this.props.cuisine,
-            // category:this.props.category,
-            // ingredients:this.props.ingredients,
-            // steps:this.props.steps,
-            // date:this.props.date
+            id:this.props.recipeID,
+            pathname: '/recipes/'+this.props.recipeID,
         };
         const authorInfor = {
-            pathname: 'members/'+this.props.authorID,
+            pathname: '/members/'+this.props.authorID,
             id: this.props.authorID
         }
-        console.log(authorInfor);
+        // console.log(authorInfor);
         return(
             <div className="recipe-list__item">
                 <Link to={recipeInfor} className="link">
                     <div className="img-container">
-                        <img src={this.props.images} alt="{this.props.images}"></img>
+                        <img src={this.props.images} alt="{this.props.foodTitles}"></img>
                     </div>
                 </Link>
                 <div className="recipe-description">

@@ -31,9 +31,9 @@ const FixedNav = () => {
     },[])
 
     useEffect ( () => {
-        console.log(window.scrollY);
-        console.log(window.innerWidth);
-        console.log(effect);
+        // console.log(window.scrollY);
+        // console.log(window.innerWidth);
+        // console.log(effect);
     },[show, responsive])
 
     return (

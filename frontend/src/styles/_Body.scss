@@ -102,6 +102,7 @@ section {
           img {
             width: 100%;
             height: auto;
+            // max-height:160px;
             transition: 0.5s linear;
           }
           img:hover {
@@ -109,7 +110,7 @@ section {
           }
         }
         .recipe-description {
-          min-height:250px;
+          min-height:270px;
           padding: 25px;
           background-color: #fff;
           margin-top: -5px;

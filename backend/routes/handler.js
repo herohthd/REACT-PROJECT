@@ -85,6 +85,38 @@ router.post('/submit', async(req,res) => {
         res.json({status:'ok'})
 })
 
+router.post('/deleteFavourited', async(req,res) => {
+    const {recipeID,userID} = req.body;
+    console.log(recipeID,userID);
+        try {
+            const response = await signUpTemplateCopy.findByIdAndUpdate(userID,{
+                $pull: { favouritedRecipes: { $in: recipeID } }
+            },{new:true})
+            console.log("Delete recipe successfully",response)
+        }
+        catch (error) {
+            console.log(error.message)
+            return res.json({status:'error',error:'Cannot delete recipe'})
+        }
+        res.json({status:'ok'})
+})
+
+router.post('/delete', async(req,res) => {
+    const {recipeID,userID} = req.body;
+    console.log(recipeID,userID);
+        try {
+            const response = await signUpTemplateCopy.findByIdAndUpdate(userID,{
+                $pull: { recipes: { $in: [recipeID] } }
+            })
+            const response1 = await recipeTemplateCopy.findByIdAndDelete(recipeID)
+            // console.log("Delete recipe successfully",response,response1)
+        }
+        catch (error) {
+            console.log(error.message)
+            return res.json({status:'error',error:'Cannot delete recipe'})
+        }
+        res.json({status:'ok'})
+})
 
 router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
@@ -205,10 +237,12 @@ router.get('/members', async(req,res) => {
 
 router.get('/members/:id',async(req,res) => {
     // console.log(req.params.id)
+    // const authors = await signUpTemplateCopy.find({});
+    // console.log(authors);
     const member = await signUpTemplateCopy.findById(req.params.id).populate('recipes').populate('favouritedRecipes').exec((err,memberData) => {
         if(err) throw err;
         if(memberData) {
-            // console.log(JSON.stringify(memberData));
+            // console.log(JSON.stringify(memberData.favouritedRecipes));
             res.end(JSON.stringify(memberData));
         } else{
             console.log("cant read member");
@@ -217,11 +251,11 @@ router.get('/members/:id',async(req,res) => {
     })
 })
 router.get('/recipes/:id',async(req,res) => {
-    console.log(req.params.id)
+    // console.log(req.params.id)
     const recipes = await recipeTemplateCopy.findById(req.params.id).populate('user').exec((err,recipeData) => {
         if(err) throw err;
         if(recipeData) {
-            console.log(JSON.stringify(recipeData));
+            // console.log(JSON.stringify(recipeData));
             res.end(JSON.stringify(recipeData));
         } else{
             console.log("cant read recipe");
