@@ -115,7 +115,7 @@
     }
 }
 tr{
-    button{
+    .button{
         margin-top:5px;
         text-decoration: none;
         background-color: $green;
@@ -124,8 +124,13 @@ tr{
         cursor: pointer;
         line-height: 25px;
         border-radius: 3px;
+        margin-right:10px;
+        a{
+            text-decoration: none;
+            color:#fff;
+        }
     }
-    button:hover{
+    .button:hover{
         background-color: #000;
     }
 }

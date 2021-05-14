@@ -85,6 +85,33 @@ router.post('/submit', async(req,res) => {
         res.json({status:'ok'})
 })
 
+router.post('/update', async(req,res) => {
+    const {recipeID,userID,title,cuisine,category,image,description,
+        ingredients,steps,difficulty,
+        yeild,numOfPeople,times} = req.body
+        try {
+            const response = await recipeTemplateCopy.findByIdAndUpdate(recipeID,{
+                title:title,
+                cuisine:cuisine,
+                category:category,
+                image:image,
+                description:description,
+                ingredients:ingredients,
+                steps:steps,
+                difficulty:difficulty,
+                yeild:yeild,
+                numOfPeople:numOfPeople,
+                times:times,
+            },{new:true})
+            console.log("Update recipe successfully",response)
+        }
+        catch (error) {
+            console.log(error.message)
+            return res.json({status:'error',error:'Cannot update recipe'})
+        }
+        res.json({status:'ok'})
+})
+
 router.post('/deleteFavourited', async(req,res) => {
     const {recipeID,userID} = req.body;
     console.log(recipeID,userID);

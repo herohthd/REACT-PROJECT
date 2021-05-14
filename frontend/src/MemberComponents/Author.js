@@ -14,16 +14,16 @@ class Author extends React.Component {
             author: undefined,
             dataIsReturned :false
         }
-        console.log(this.state);
+        // console.log(this.state);
     }
     async componentDidMount(){
-        console.log("DID MOUNT")
+        // console.log("DID MOUNT")
         // console.log(this.props.location.id);
         const pathname = 'http://localhost:4000/members/'+this.props.location.id;
         // console.log(pathname);
         const data = await fetch(pathname);
         const author = await data.json();
-        console.log(author);
+        // console.log(author);
         const newDate = new Date(author.date);
         // console.log(newDate);
         const day = newDate.getDate();
@@ -43,7 +43,7 @@ class Author extends React.Component {
         // Typical usage (don't forget to compare props):
         const changeID = this.props.location.id !== prevProps.location.id; 
         if (changeID || !this.state.dataIsReturned) {
-            console.log("DID UPDATE");
+            // console.log("DID UPDATE");
             const pathname = 'http://localhost:4000/members/'+this.props.location.id;
             // console.log(pathname);
             const data = await fetch(pathname);
@@ -226,6 +226,10 @@ class Author extends React.Component {
                                                                             pathname: '/recipes/'+recipe._id,
                                                                             id:recipe._id
                                                                         };
+                                                                        const recipeUpdate = {
+                                                                            pathname: '/update',
+                                                                            recipeID:recipe._id,
+                                                                        }
                                                                         return  <tr className="no-records-found">
                                                                             <th>
                                                                                 <Link to={recipeInfor}>
@@ -249,7 +253,15 @@ class Author extends React.Component {
                                                                             </th>
                                                                             {
                                                                             AuthService.getCurrentUser().id === author._id &&
-                                                                            <button onClick={this.removeRecipe.bind(this,recipe._id,author._id)}>
+                                                                            <button className="button">
+                                                                                <Link to={recipeUpdate}>
+                                                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                                                </Link>
+                                                                            </button>
+                                                                            }
+                                                                            {
+                                                                            AuthService.getCurrentUser().id === author._id &&
+                                                                            <button className="button" onClick={this.removeRecipe.bind(this,recipe._id,author._id)}>
                                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                                             </button>
                                                                             }
@@ -341,7 +353,7 @@ class Author extends React.Component {
                                                                             </th>
                                                                             {
                                                                             AuthService.getCurrentUser().id === author._id &&
-                                                                            <button onClick={this.removeFavouritedRecipe.bind(this,recipe._id,author._id)}>
+                                                                            <button className="button" onClick={this.removeFavouritedRecipe.bind(this,recipe._id,author._id)}>
                                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                                             </button>
                                                                             }
