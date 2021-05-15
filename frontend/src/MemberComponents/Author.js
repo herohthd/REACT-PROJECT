@@ -12,12 +12,12 @@ class Author extends React.Component {
         super(props)
         this.state = {
             author: undefined,
-            dataIsReturned :false
+            dataIsReturned :false,
         }
         // console.log(this.state);
     }
     async componentDidMount(){
-        // console.log("DID MOUNT")
+        console.log("DID MOUNT")
         // console.log(this.props.location.id);
         const pathname = 'http://localhost:4000/members/'+this.props.location.id;
         // console.log(pathname);
@@ -43,7 +43,7 @@ class Author extends React.Component {
         // Typical usage (don't forget to compare props):
         const changeID = this.props.location.id !== prevProps.location.id; 
         if (changeID || !this.state.dataIsReturned) {
-            // console.log("DID UPDATE");
+            console.log("DID UPDATE");
             const pathname = 'http://localhost:4000/members/'+this.props.location.id;
             // console.log(pathname);
             const data = await fetch(pathname);
@@ -66,7 +66,7 @@ class Author extends React.Component {
     removeFavouritedRecipe(recipeID,userID){
         const deleteRecipe = {
             recipeID,
-            userID
+            userID:AuthService.getCurrentUser().id,
         }
         console.log(deleteRecipe)
         axios.post('http://localhost:4000/deleteFavourited', deleteRecipe)
@@ -107,6 +107,25 @@ class Author extends React.Component {
             // author: undefined,
             dataIsReturned :false
         })
+    }
+
+    onClickHeart(recipeID,userID){
+        // event.preventDefault();
+        const favouritedRecipe = {
+            recipeID,
+            userID:AuthService.getCurrentUser().id,
+        }
+        axios.post('http://localhost:4000/addFavourited', favouritedRecipe)
+        .then(function (response) {
+            console.log(response);
+            if(response.data.status === 'error'){
+                alert(response.data.error);
+            }
+            else alert('Add to favourited recipes successfully');
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     render() {
@@ -252,18 +271,24 @@ class Author extends React.Component {
                                                                                 <div className="fht-cell"></div>
                                                                             </th>
                                                                             {
-                                                                            AuthService.getCurrentUser().id === author._id &&
-                                                                            <button className="button">
-                                                                                <Link to={recipeUpdate}>
-                                                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                                                                </Link>
-                                                                            </button>
+                                                                                AuthService.getCurrentUser().id === author._id &&
+                                                                                <button className="button">
+                                                                                    <Link to={recipeUpdate}>
+                                                                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                                                    </Link>
+                                                                                </button>
                                                                             }
                                                                             {
-                                                                            AuthService.getCurrentUser().id === author._id &&
-                                                                            <button className="button" onClick={this.removeRecipe.bind(this,recipe._id,author._id)}>
-                                                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                                                            </button>
+                                                                                AuthService.getCurrentUser().id === author._id &&
+                                                                                <button className="button" onClick={this.removeRecipe.bind(this,recipe._id,author._id)}>
+                                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                                </button>
+                                                                            }
+                                                                            {
+                                                                                 AuthService.getCurrentUser().id !== author._id &&
+                                                                                 <button className="button" onClick={this.onClickHeart.bind(this,recipe._id,author._id)}>
+                                                                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                                 </button>
                                                                             }
                                                                         </tr>                     
                                                                     }                                               
@@ -352,10 +377,16 @@ class Author extends React.Component {
                                                                                 </div>
                                                                             </th>
                                                                             {
-                                                                            AuthService.getCurrentUser().id === author._id &&
-                                                                            <button className="button" onClick={this.removeFavouritedRecipe.bind(this,recipe._id,author._id)}>
-                                                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                                                            </button>
+                                                                                AuthService.getCurrentUser().id === author._id &&
+                                                                                <button className="button" onClick={this.removeFavouritedRecipe.bind(this,recipe._id)}>
+                                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                                </button>
+                                                                            }
+                                                                            {
+                                                                                AuthService.getCurrentUser().id !== author._id &&
+                                                                                <button className="button" onClick={this.onClickHeart.bind(this,recipe._id,author._id)}>
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                                </button>
                                                                             }
                                                                         </tr>                                
                                                                     }                                

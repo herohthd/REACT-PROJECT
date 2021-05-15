@@ -119,7 +119,10 @@ router.post('/deleteFavourited', async(req,res) => {
             const response = await signUpTemplateCopy.findByIdAndUpdate(userID,{
                 $pull: { favouritedRecipes: { $in: recipeID } }
             },{new:true})
-            console.log("Delete recipe successfully",response)
+            const response1 = await recipeTemplateCopy.findByIdAndUpdate(recipeID,{
+                $inc: {numOfFavourited : -1}
+            },{new:true})
+            console.log("Delete recipe successfully",response,response1)
         }
         catch (error) {
             console.log(error.message)
@@ -150,10 +153,10 @@ router.post('/addFavourited', async(req,res) => {
         try {
             const response = await signUpTemplateCopy.findByIdAndUpdate(userID,{
                 $push: { favouritedRecipes: recipeID }
-            })
+            },{new:true})
             const response1 = await recipeTemplateCopy.findByIdAndUpdate(recipeID,{
                 $inc: {numOfFavourited : 1}
-            })
+            },{new:true})
             console.log("Add to favourited list successfully",response)
         }
         catch (error) {
@@ -264,12 +267,12 @@ router.get('/members', async(req,res) => {
 
 router.get('/members/:id',async(req,res) => {
     // console.log(req.params.id)
-    // const authors = await signUpTemplateCopy.find({});
-    // console.log(authors);
+    const authors = await signUpTemplateCopy.findById(req.params.id);
+    console.log(authors);
     const member = await signUpTemplateCopy.findById(req.params.id).populate('recipes').populate('favouritedRecipes').exec((err,memberData) => {
         if(err) throw err;
         if(memberData) {
-            // console.log(JSON.stringify(memberData.favouritedRecipes));
+            console.log(JSON.stringify(memberData.favouritedRecipes.length));
             res.end(JSON.stringify(memberData));
         } else{
             console.log("cant read member");
