@@ -6,7 +6,7 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv/config');
 
-mongoose.connect(process.env.DB_URI, {
+mongoose.connect(process.env.DB_URI || 'mongodb+srv://HUYDQ184271:huycoihthd123@cluster0.cmcyc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser:true,
     useUnifiedTopology:true,
     useCreateIndex:true
