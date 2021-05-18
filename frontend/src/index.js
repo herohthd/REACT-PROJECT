@@ -11,6 +11,7 @@ import RecipeItem from './RecipesComponents/RecipeItem'
 import Author from './MemberComponents/Author'
 import Members from './MemberComponents/Member'
 import Update from './MemberComponents/UpdateRecipe'
+import Contact from './ContactComponents/Contact'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Route path="/members" exact component ={Members}/>
         <Route path="/members/:id" exact component ={Author}/> 
         <Route path="/update" exact component ={Update}/> 
+        <Route path="/contact" exact component ={Contact}/> 
       </Switch>
     </Router>
   </React.StrictMode>,

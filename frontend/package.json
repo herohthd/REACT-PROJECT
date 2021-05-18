@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "emailjs": "^3.4.0",
+    "emailjs-com": "^2.6.4",
     "jquery": "^3.6.0",
     "node": "^15.10.0",
     "react": "^17.0.1",
