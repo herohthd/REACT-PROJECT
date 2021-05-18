@@ -113,8 +113,9 @@ class Author extends React.Component {
         // event.preventDefault();
         const favouritedRecipe = {
             recipeID,
-            userID:AuthService.getCurrentUser().id,
+            userID:AuthService.getCurrentUser().id
         }
+        // console.log(favouritedRecipe);
         axios.post('http://localhost:4000/addFavourited', favouritedRecipe)
         .then(function (response) {
             console.log(response);
@@ -140,6 +141,7 @@ class Author extends React.Component {
         //     pathname: 'recipes/'+this.props.recipeID,
         //     id: this.props.recipeID
         // }
+        const isLoggedIn = (AuthService.getCurrentUser()) ? AuthService.getCurrentUser().id : null ;
         return (
             <div className="author">
             <Nav/>
@@ -270,8 +272,9 @@ class Author extends React.Component {
                                                                                 <div className="th-inner">{recipe.difficulty}</div>
                                                                                 <div className="fht-cell"></div>
                                                                             </th>
+                                                                            
                                                                             {
-                                                                                AuthService.getCurrentUser().id === author._id &&
+                                                                                isLoggedIn && isLoggedIn === author._id &&
                                                                                 <button className="button">
                                                                                     <Link to={recipeUpdate}>
                                                                                         <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -279,17 +282,18 @@ class Author extends React.Component {
                                                                                 </button>
                                                                             }
                                                                             {
-                                                                                AuthService.getCurrentUser().id === author._id &&
+                                                                                isLoggedIn && isLoggedIn === author._id &&
                                                                                 <button className="button" onClick={this.removeRecipe.bind(this,recipe._id,author._id)}>
                                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                                 </button>
                                                                             }
                                                                             {
-                                                                                 AuthService.getCurrentUser().id !== author._id &&
-                                                                                 <button className="button" onClick={this.onClickHeart.bind(this,recipe._id,author._id)}>
-                                                                                    <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                                 </button>
+                                                                                isLoggedIn && isLoggedIn !== author._id &&
+                                                                                <button className="button" onClick={this.onClickHeart.bind(this,recipe._id,author._id)}>
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                                </button>
                                                                             }
+                                                                        
                                                                         </tr>                     
                                                                     }                                               
                                                                     )
@@ -377,13 +381,13 @@ class Author extends React.Component {
                                                                                 </div>
                                                                             </th>
                                                                             {
-                                                                                AuthService.getCurrentUser().id === author._id &&
+                                                                                isLoggedIn && isLoggedIn === author._id &&
                                                                                 <button className="button" onClick={this.removeFavouritedRecipe.bind(this,recipe._id)}>
                                                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                                                 </button>
                                                                             }
                                                                             {
-                                                                                AuthService.getCurrentUser().id !== author._id &&
+                                                                                isLoggedIn && isLoggedIn !== author._id &&
                                                                                 <button className="button" onClick={this.onClickHeart.bind(this,recipe._id,author._id)}>
                                                                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                                                                 </button>

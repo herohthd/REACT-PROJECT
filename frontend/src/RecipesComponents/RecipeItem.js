@@ -57,6 +57,12 @@ class RecipeItem extends React.Component {
     }
     onClickHeart(event){
         event.preventDefault();
+        const isLoggedIn = (AuthService.getCurrentUser()) ? AuthService.getCurrentUser().id : null;
+        if(isLoggedIn === null){
+            alert("You must log in to add this recipe to favourited list");
+            window.location = '/register'
+        }
+        else {
         const favouritedRecipe = {
             recipeID: this.props.location.id,
             userID:AuthService.getCurrentUser().id
@@ -72,6 +78,7 @@ class RecipeItem extends React.Component {
           .catch(function (error) {
             console.log(error);
           });
+        }
     }
     render() {
         const props = this.state.recipe;
