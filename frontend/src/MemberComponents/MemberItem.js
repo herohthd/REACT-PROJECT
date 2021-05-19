@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 class MemberItem extends React.Component {
     render() {
         const memberInfor = {
-            pathname: '/server-members/'+this.props.id,
+            pathname: '/members/'+this.props.id,
             id:this.props.id,
             recipesID:this.props.recipes,
             // avatar:this.props.avatar,

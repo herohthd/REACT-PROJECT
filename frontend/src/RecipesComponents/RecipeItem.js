@@ -18,7 +18,7 @@ class RecipeItem extends React.Component {
     }
     async componentDidMount(){
         console.log(this.props.location.id);
-        const pathname = '/recipes/'+this.props.location.id;
+        const pathname = '/server-recipes/'+this.props.location.id;
         // console.log(pathname);
         const data = await fetch(pathname);
         const recipe = await data.json();
