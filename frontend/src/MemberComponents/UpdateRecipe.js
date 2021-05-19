@@ -39,7 +39,7 @@ class Login extends React.Component {
     async componentDidMount(){
         // console.log("DID MOUNT")
         // console.log(this.props.location.id);
-        const pathname = 'http://localhost:4000/recipes/'+this.props.location.recipeID;
+        const pathname = '/server-recipes/'+this.props.location.recipeID;
         // console.log(pathname);
         const data = await fetch(pathname);
         const recipe = await data.json();
@@ -142,7 +142,7 @@ class Login extends React.Component {
             numOfPeople: this.state.numOfPeople,
             times: this.state.times
         }
-        axios.post('http://localhost:4000/update', recipe)
+        axios.post('/update', recipe)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){

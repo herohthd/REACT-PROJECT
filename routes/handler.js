@@ -251,7 +251,7 @@ router.get('/ratedAuthors', async(req,res) => {
     })
 })
 
-router.get('/members', async(req,res) => {
+router.get('/server-members', async(req,res) => {
     const members = await signUpTemplateCopy.find({}).populate('recipes').populate('favouritedRecipes').exec((err,memberData) => {
         if(err) throw err;
         if(memberData) {
@@ -265,7 +265,7 @@ router.get('/members', async(req,res) => {
 })
 
 
-router.get('/members/:id',async(req,res) => {
+router.get('/server-members/:id',async(req,res) => {
     // console.log(req.params.id)
     const authors = await signUpTemplateCopy.findById(req.params.id);
     console.log(authors);
@@ -280,7 +280,7 @@ router.get('/members/:id',async(req,res) => {
         }
     })
 })
-router.get('/recipes/:id',async(req,res) => {
+router.get('/server-recipes/:id',async(req,res) => {
     // console.log(req.params.id)
     const recipes = await recipeTemplateCopy.findById(req.params.id).populate('user').exec((err,recipeData) => {
         if(err) throw err;

@@ -19,7 +19,7 @@ class Author extends React.Component {
     async componentDidMount(){
         console.log("DID MOUNT")
         // console.log(this.props.location.id);
-        const pathname = 'http://localhost:4000/members/'+this.props.location.id;
+        const pathname = '/server-members/'+this.props.location.id;
         // console.log(pathname);
         const data = await fetch(pathname);
         const author = await data.json();
@@ -44,7 +44,7 @@ class Author extends React.Component {
         const changeID = this.props.location.id !== prevProps.location.id; 
         if (changeID || !this.state.dataIsReturned) {
             console.log("DID UPDATE");
-            const pathname = 'http://localhost:4000/members/'+this.props.location.id;
+            const pathname = '/server-members/'+this.props.location.id;
             // console.log(pathname);
             const data = await fetch(pathname);
             const author = await data.json();
@@ -69,7 +69,7 @@ class Author extends React.Component {
             userID:AuthService.getCurrentUser().id,
         }
         console.log(deleteRecipe)
-        axios.post('http://localhost:4000/deleteFavourited', deleteRecipe)
+        axios.post('/deleteFavourited', deleteRecipe)
         .then(function (response) {
             // console.log(response);
             if(response.data.status === 'error'){
@@ -92,7 +92,7 @@ class Author extends React.Component {
             userID
         }
         console.log(deleteRecipe)
-        axios.post('http://localhost:4000/delete', deleteRecipe)
+        axios.post('/delete', deleteRecipe)
         .then(function (response) {
             // console.log(response);
             if(response.data.status === 'error'){
@@ -116,7 +116,7 @@ class Author extends React.Component {
             userID:AuthService.getCurrentUser().id
         }
         // console.log(favouritedRecipe);
-        axios.post('http://localhost:4000/addFavourited', favouritedRecipe)
+        axios.post('/addFavourited', favouritedRecipe)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){

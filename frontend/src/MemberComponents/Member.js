@@ -14,7 +14,7 @@ const Members = () => {
     const [items, setItems] = useState([]);
 
     const fetchItems = async () => {
-        const data = await fetch('http://localhost:4000/members');
+        const data = await fetch('/server-members');
         const items = await data.json();
         console.log(items);
         items.forEach(item => {

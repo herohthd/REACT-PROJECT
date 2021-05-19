@@ -108,7 +108,7 @@ class Login extends React.Component {
             numOfPeople: this.state.numOfPeople,
             times: this.state.times
         }
-        axios.post('http://localhost:4000/submit', recipe)
+        axios.post('/submit', recipe)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){

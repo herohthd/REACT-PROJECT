@@ -46,7 +46,7 @@ class Login extends React.Component {
             usernameLogin:this.state.usernameLogIn,
             passwordLogin:this.state.passwordLogIn
         }
-        axios.post('http://localhost:4000/login', login)
+        axios.post('/login', login)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){
@@ -93,7 +93,7 @@ class Login extends React.Component {
             avatar: this.state.avatar
         }
 
-        axios.post('http://localhost:4000/register', registered)
+        axios.post('/register', registered)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){

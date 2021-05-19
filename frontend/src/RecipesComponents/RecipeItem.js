@@ -18,7 +18,7 @@ class RecipeItem extends React.Component {
     }
     async componentDidMount(){
         console.log(this.props.location.id);
-        const pathname = 'http://localhost:4000/recipes/'+this.props.location.id;
+        const pathname = '/recipes/'+this.props.location.id;
         // console.log(pathname);
         const data = await fetch(pathname);
         const recipe = await data.json();
@@ -43,7 +43,7 @@ class RecipeItem extends React.Component {
             userID:this.state.recipe.user._id,
         }
         // console.log(likedRecipe);
-        axios.post('http://localhost:4000/like', likedRecipe)
+        axios.post('/like', likedRecipe)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){
@@ -67,7 +67,7 @@ class RecipeItem extends React.Component {
             recipeID: this.props.location.id,
             userID:AuthService.getCurrentUser().id
         }
-        axios.post('http://localhost:4000/addFavourited', favouritedRecipe)
+        axios.post('/addFavourited', favouritedRecipe)
         .then(function (response) {
             console.log(response);
             if(response.data.status === 'error'){
