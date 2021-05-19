@@ -25,7 +25,7 @@ class Recipe extends React.Component {
 
     }
     async componentDidMount(){
-        const pathname = '/recipes/';
+        const pathname = '/server-recipes/';
         const data = await fetch(pathname);
         const recipes = await data.json();
         this.setState({

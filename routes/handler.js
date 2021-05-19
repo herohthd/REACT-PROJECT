@@ -186,7 +186,7 @@ router.post('/like', async(req,res) => {
         res.json({status:'ok'})
 })
 
-router.get('/recipes', async(req,res) => {
+router.get('/server-recipes', async(req,res) => {
     const recipes = await recipeTemplateCopy.find({}).populate("user").exec((err,recipeData) => {
         if(err) throw err;
         if(recipeData) {
