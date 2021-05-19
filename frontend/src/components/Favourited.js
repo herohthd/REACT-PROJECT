@@ -11,7 +11,7 @@ class Favourited extends React.Component {
     };
   }
   async componentDidMount(){
-    const pathname = 'http://localhost:4000/favouritedRecipes';
+    const pathname = '/favouritedRecipes';
     // console.log(pathname);
     const data = await fetch(pathname);
     const latestRecipes = await data.json();
