@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/',routesHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 if(process.env.NODE_ENV === 'production'){
     //set static folder

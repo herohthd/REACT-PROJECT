@@ -16,7 +16,7 @@ class Nav extends React.Component {
     const user = AuthService.getCurrentUser();
     // console.log(this.props.location.pathname);
     if (user) {
-      const pathname = '/members/'+AuthService.getCurrentUser().id;
+      const pathname = '/server-members/'+AuthService.getCurrentUser().id;
       console.log(pathname);
       fetch(pathname).then(response => response.json()).then(data => {
         const newDate = new Date(data.date);
