@@ -12,7 +12,7 @@ class RatedAuthor extends React.Component {
         };
     }
     async componentDidMount(){
-      const pathname = 'http://localhost:4000/ratedAuthors';
+      const pathname = '/ratedAuthors';
       // console.log(pathname);
       const data = await fetch(pathname);
       const ratedAuthors = await data.json();

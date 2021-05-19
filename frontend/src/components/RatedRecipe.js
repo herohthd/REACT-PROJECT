@@ -11,7 +11,7 @@ class RatedRecipe extends React.Component {
         };
     }
     async componentDidMount(){
-      const pathname = 'http://localhost:4000/ratedRecipes';
+      const pathname = '/ratedRecipes';
       // console.log(pathname);
       const data = await fetch(pathname);
       const ratedRecipes = await data.json();
