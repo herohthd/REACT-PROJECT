@@ -2,7 +2,6 @@ const { request, response } = require('express');
 const express = require('express');
 const router = express.Router();
 const signUpTemplateCopy = require('../models/SignUpModel')
-const signInTemplateCopy = require('../models/SignInModel')
 const recipeTemplateCopy = require('../models/RecipesModel')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
