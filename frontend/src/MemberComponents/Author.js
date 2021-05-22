@@ -168,7 +168,21 @@ class Author extends React.Component {
                 return false;
             })
         }
-        console.log(recipes);
+        if(favouritedRecipeTitle){
+            favouritedRecipeTitle = favouritedRecipeTitle.split(" ");
+            favouritedRecipes = author.favouritedRecipes.filter(recipe => {
+                let mark = 1;
+                for(let item of favouritedRecipeTitle){
+                    if(!recipe.title.includes(item))  {
+                        mark = 0;
+                        break;
+                    }
+                }
+                if(mark) return true;
+                return false;
+            })
+        }
+        // console.log(recipes);
         return (
             <div className="author">
             <Nav/>
@@ -346,7 +360,7 @@ class Author extends React.Component {
                                                 <div className="boostrap-table">
                                                     <div className="fixed-table-toolbar">
                                                         <div className="pull-left-search">
-                                                            <input className="form-control" type="text" placeholder="Search for Recipes..."></input>
+                                                            <input className="form-control" type="text" onChange={this.handleChangeFavouritedRecipeTitle} placeholder="Search for Recipes..."></input>
                                                         </div>
                                                     </div>
                                                     <div className="fixed-table-container">
@@ -378,7 +392,7 @@ class Author extends React.Component {
                                                                 </thead>
                                                                 <tbody >
                                                                 {
-                                                                    author.favouritedRecipes.map(recipe =>  {
+                                                                    favouritedRecipes.map(recipe =>  {
                                                                         const recipeInfor = {
                                                                             pathname: '/recipes/'+recipe._id,
                                                                             id:recipe._id
