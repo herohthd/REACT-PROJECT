@@ -168,7 +168,7 @@ class Author extends React.Component {
                 return false;
             })
         }
-
+        console.log(recipes);
         return (
             <div className="author">
             <Nav/>
@@ -238,7 +238,7 @@ class Author extends React.Component {
                                                 <div className="boostrap-table">
                                                     <div className="fixed-table-toolbar">
                                                         <div className="pull-left-search">
-                                                            <input className="form-control" type="text" placeholder="Search for Recipes..."></input>
+                                                            <input className="form-control" type="text" onChange={this.handleChangeRecipeTitle} placeholder="Search for Recipes..."></input>
                                                         </div>
                                                     </div>
                                                     <div className="fixed-table-container">
