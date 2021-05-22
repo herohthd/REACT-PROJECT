@@ -12,9 +12,13 @@ class Author extends React.Component {
         super(props)
         this.state = {
             author: undefined,
+            recipeTitle:"",
+            favouritedRecipeTitle:"",
             dataIsReturned :false,
         }
         // console.log(this.state);
+        this.handleChangeRecipeTitle =  this.handleChangeRecipeTitle.bind(this);
+        this.handleChangeFavouritedRecipeTitle =  this.handleChangeFavouritedRecipeTitle.bind(this);
     }
     async componentDidMount(){
         console.log("DID MOUNT")
@@ -129,6 +133,14 @@ class Author extends React.Component {
           });
     }
 
+    handleChangeRecipeTitle(event){
+        this.setState({recipeTitle:event.target.value})
+    }
+
+    handleChangeFavouritedRecipeTitle(event){
+        this.setState({favouritedRecipeTitle:event.target.value})
+    }
+
     render() {
         const author = this.state.author;
         const dataIsReturned = this.state.dataIsReturned
@@ -137,11 +149,26 @@ class Author extends React.Component {
         if(!dataIsReturned){
             return <div>LOADING...</div>
         }
-        // const recipeInfor = {
-        //     pathname: 'recipes/'+this.props.recipeID,
-        //     id: this.props.recipeID
-        // }
         const isLoggedIn = (AuthService.getCurrentUser()) ? AuthService.getCurrentUser().id : null ;
+        let recipeTitle = this.state.recipeTitle;
+        let recipes = author.recipes;
+        let favouritedRecipeTitle = this.state.favouritedRecipeTitle;
+        let favouritedRecipes = author.favouritedRecipes;
+        if(recipeTitle){
+            recipeTitle = recipeTitle.split(" ");
+            recipes = author.recipes.filter(recipe => {
+                let mark = 1;
+                for(let item of recipeTitle){
+                    if(!recipe.title.includes(item))  {
+                        mark = 0;
+                        break;
+                    }
+                }
+                if(mark) return true;
+                return false;
+            })
+        }
+
         return (
             <div className="author">
             <Nav/>
@@ -242,7 +269,7 @@ class Author extends React.Component {
                                                                 </thead>
                                                                 <tbody >
                                                                     {
-                                                                    author.recipes.map(recipe => {       
+                                                                    recipes.map(recipe => {       
                                                                         const recipeInfor = {
                                                                             pathname: '/recipes/'+recipe._id,
                                                                             id:recipe._id
