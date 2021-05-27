@@ -26,7 +26,7 @@ class Login extends React.Component {
     }
     changeAvatar(event){
         this.setState({
-            avatar:event.target.files[0]
+            avatar:event.target.value
         })
     }
     changeUserNameLogIn(event){
@@ -90,7 +90,7 @@ class Login extends React.Component {
             fullname: this.state.fullname,
             username: this.state.username,
             password: this.state.password,
-            avatar: this.state.avatar.name
+            avatar: this.state.avatar
         }
 
         axios.post('/register', registered)
@@ -149,8 +149,8 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="avatar">Avatar</label>
-                                    <input type="file" id="input-file"
+                                    <label for="avatar">Avatar(Input URL)</label>
+                                    <input type="text" 
                                     onChange={this.changeAvatar}
                                     value={this.state.avatar}
                                     required></input>
