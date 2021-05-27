@@ -150,7 +150,7 @@ class Login extends React.Component {
 
                                 <div className="form-group">
                                     <label for="avatar">Avatar</label>
-                                    <input type="text"
+                                    <input type="file" id="input-file"
                                     onChange={this.changeAvatar}
                                     value={this.state.avatar}
                                     required></input>
