@@ -222,7 +222,7 @@ class Recipe extends React.Component {
                                         Recipe Category
                                     </label>
                                     <select className="recipe-select" value={this.state.category} onChange={this.handleChangeCategory}>
-                                        <option selected> - Select - </option>
+                                        <option selected value=""> - Select - </option>
                                         {uniqueCategory.map(recipe => 
                                             <option key={recipe._id} value={recipe.category}>
                                                 {recipe.category}
@@ -235,7 +235,7 @@ class Recipe extends React.Component {
                                         Recipe Cuisine
                                     </label>
                                     <select className="recipe-select" value={this.state.cuisine} onChange={this.handleChangeCuisine}>
-                                        <option selected> - Select - </option>
+                                        <option selected value=""> - Select - </option>
                                         {uniqueCuisine.map(recipe => 
                                             <option key={recipe._id} value={recipe.cuisine}>
                                                 {recipe.cuisine}
