@@ -248,7 +248,7 @@ class Recipe extends React.Component {
                                         Sort recipes
                                     </label>
                                     <select className="recipe-select" value={this.state.sort} onChange={this.handleChangeSort}>
-                                        <option selected> - Select - </option>
+                                        <option selected value=""> - Select - </option>
                                         <option value="Top rated">
                                             Top rated
                                         </option>
