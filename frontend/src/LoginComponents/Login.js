@@ -26,7 +26,7 @@ class Login extends React.Component {
     }
     changeAvatar(event){
         this.setState({
-            avatar:event.target.result
+            avatar:event.target.files[0]
         })
     }
     changeUserNameLogIn(event){
@@ -90,7 +90,7 @@ class Login extends React.Component {
             fullname: this.state.fullname,
             username: this.state.username,
             password: this.state.password,
-            avatar: this.state.avatar
+            avatar: this.state.avatar.name
         }
 
         axios.post('/register', registered)
