@@ -289,7 +289,7 @@ class Recipe extends React.Component {
                             cuisine={recipe.cuisine} category={recipe.category}
                             ingredients={recipe.ingredients} steps={recipe.steps}/>
                         )
-                        :( (category !== "" || cuisine !== "" || sort !== "") ? <div>There is no recipe you want to find.</div>
+                        :( (category !== "" || cuisine !== "" || sort !== "" || ingredients !== "" || keyword !== "") ? <div>There is no recipe you want to find.</div>
                             :   recipes.map(recipe => 
                                 <RatedRecipeItem recipeID={recipe._id} images={recipe.image} 
                                 authorID={recipe.user._id} date={recipe.date}
