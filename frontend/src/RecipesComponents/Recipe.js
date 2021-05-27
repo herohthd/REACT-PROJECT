@@ -105,7 +105,7 @@ class Recipe extends React.Component {
         //FILTER INGREDIENTS
         if(filterRecipes.length !== 0){
             if(ingredients){
-                ingredients = ingredients.split(" ");
+                ingredients = ingredients.split(",");
                 console.log(ingredients)
                 filterRecipes = filterRecipes.filter(recipe =>{
                     let mark = 1;
@@ -122,7 +122,7 @@ class Recipe extends React.Component {
         }
         else{
             if(ingredients){
-                ingredients = ingredients.split(" ");
+                ingredients = ingredients.split(",");
                 console.log(ingredients)
                 filterRecipes = recipes.filter(recipe =>{
                     let mark = 1;
@@ -141,7 +141,7 @@ class Recipe extends React.Component {
         //FILTER KEYWORD
         if(filterRecipes.length !== 0){
             if(keyword){
-                keyword = keyword.split(" ");
+                keyword = keyword.split(",");
                 console.log(keyword)
                 filterRecipes = filterRecipes.filter(recipe =>{
                     let mark = 1;
@@ -158,7 +158,7 @@ class Recipe extends React.Component {
         }
         else{
             if(keyword){
-                keyword = keyword.split(" ");
+                keyword = keyword.split(",");
                 console.log(keyword)
                 filterRecipes = recipes.filter(recipe =>{
                     let mark = 1;
