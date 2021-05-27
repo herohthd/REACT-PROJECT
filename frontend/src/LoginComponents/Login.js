@@ -26,7 +26,7 @@ class Login extends React.Component {
     }
     changeAvatar(event){
         this.setState({
-            avatar:event.target.value
+            avatar:event.target.result
         })
     }
     changeUserNameLogIn(event){
@@ -85,7 +85,7 @@ class Login extends React.Component {
     }
     onSubmit(event){
         event.preventDefault();
-        
+        console.log(this.state.avatar);
         const registered = {
             fullname: this.state.fullname,
             username: this.state.username,
