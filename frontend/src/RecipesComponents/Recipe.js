@@ -77,8 +77,10 @@ class Recipe extends React.Component {
         if(this.props.location.category){
             if(this.state.category === "")
                 category = this.props.location.category;
-            else
+            else if(this.state.category === "default")
                 category = "";
+            else 
+                category = this.state.category;
         } else {
             category = this.state.category;
         }
