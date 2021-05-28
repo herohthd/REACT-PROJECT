@@ -78,8 +78,10 @@ class Recipe extends React.Component {
             if(this.state.category === "")
                 category = this.props.location.category;
             else
-                category = this.state.category;
-        } 
+                category = "";
+        } else {
+            category = this.state.category;
+        }
 
         if(!this.state.sort && this.props.location.sort){
             sort = this.props.location.sort;
@@ -223,7 +225,7 @@ class Recipe extends React.Component {
                                         Recipe Category
                                     </label>
                                     <select className="recipe-select" value={this.state.category} onChange={this.handleChangeCategory}>
-                                        <option selected value=""> - Select - </option>
+                                        <option selected value="default"> - Select - </option>
                                         {uniqueCategory.map(recipe => 
                                             <option key={recipe._id} value={recipe.category}>
                                                 {recipe.category}
