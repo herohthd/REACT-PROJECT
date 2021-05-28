@@ -74,11 +74,12 @@ class Recipe extends React.Component {
         let category= "";
         let sort = "";
         
-        if(this.state.category !== "" && this.props.location.category){
-            category = this.props.location.category;
-        } else{
-            category = this.state.category;
-        }
+        if(this.props.location.category){
+            if(this.state.category === "")
+                category = this.props.location.category;
+            else
+                category = this.state.category;
+        } 
 
         if(!this.state.sort && this.props.location.sort){
             sort = this.props.location.sort;
