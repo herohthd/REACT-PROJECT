@@ -9,14 +9,15 @@ class Contact extends React.Component {
 
     sendEmail(e) {
         e.preventDefault();
-            emailjs.sendForm('service_1djgpz8', 'template_673u2ko', e.target, 'user_mWGHyNTznGLPcYRbzqn5X')
-            .then((result) => {
-                console.log(result.text);
-                alert("Send message successfully!")
-            }, (error) => {
-                console.log(error.text);
-            });
-            e.target.reset();
+        emailjs.sendForm('service_1djgpz8', 'template_673u2ko', e.target, 'user_mWGHyNTznGLPcYRbzqn5X')
+        .then((result) => {
+            console.log(e.target);
+            console.log(result);
+            alert("Send message successfully!")
+        }, (error) => {
+            console.log(error.text);
+        });
+        e.target.reset();
     }  
     render(){
         return(
