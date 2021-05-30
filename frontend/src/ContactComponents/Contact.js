@@ -6,17 +6,9 @@ import emailjs from 'emailjs-com';
 import '../styles/style.scss'
 
 class Contact extends React.Component {
-    ValidateEmail(mail) 
-    {
-        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
-        {
-            return (true)
-        }
-            return (false)
-    }
+
     sendEmail(e) {
         e.preventDefault();
-        if(this.ValidateEmail(e.target)){
             emailjs.sendForm('service_1djgpz8', 'template_673u2ko', e.target, 'user_mWGHyNTznGLPcYRbzqn5X')
             .then((result) => {
                 console.log(result.text);
@@ -25,11 +17,7 @@ class Contact extends React.Component {
                 console.log(error.text);
             });
             e.target.reset();
-        }
-        else{
-            alert("You have entered an invalid email address!")
-        }
-    }    
+    }  
     render(){
         return(
             <section className="contact-container">
