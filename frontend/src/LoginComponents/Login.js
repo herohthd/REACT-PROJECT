@@ -159,7 +159,7 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="avatar">Avatar(Input URL)</label>
+                                    <label for="avatar">Avatar(Input image address)</label>
                                     <input type="text" 
                                     onChange={this.changeAvatar}
                                     value={this.state.avatar}

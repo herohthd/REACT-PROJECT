@@ -188,7 +188,7 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="ingredients">Ingredients</label>
+                                    <label for="ingredients">Ingredients(Each ingredient in one line)</label>
                                     <textarea 
                                     onChange={this.changeIngredients}
                                     value={this.state.ingredients}
@@ -197,7 +197,7 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label for="steps">Steps</label>
+                                    <label for="steps">Steps(Each step in one line)</label>
                                     <textarea
                                     onChange={this.changeSteps}
                                     value={this.state.steps}
