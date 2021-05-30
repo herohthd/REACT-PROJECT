@@ -93,7 +93,7 @@ class Login extends React.Component {
             password: this.state.password,
             avatar: this.state.avatar
         }
-        if (usernameRegex.test(username)) {
+        if (usernameRegex.test(registered.username)) {
             axios.post('/register', registered)
             .then(function (response) {
                 console.log(response);
