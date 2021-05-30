@@ -86,31 +86,41 @@ class Login extends React.Component {
     onSubmit(event){
         event.preventDefault();
         console.log(this.state.avatar);
+        var usernameRegex = /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/;
         const registered = {
             fullname: this.state.fullname,
             username: this.state.username,
             password: this.state.password,
             avatar: this.state.avatar
         }
-
-        axios.post('/register', registered)
-        .then(function (response) {
-            console.log(response);
-            if(response.data.status === 'error'){
-                alert(response.data.error);
-            }
-            else alert('Register successfully');
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        // window.location = '/';
-        this.setState({
-            fullname: '',
-            username: '',
-            password: '',
-            avatar: '',
-        })
+        if (usernameRegex.test(username)) {
+            axios.post('/register', registered)
+            .then(function (response) {
+                console.log(response);
+                if(response.data.status === 'error'){
+                    alert(response.data.error);
+                }
+                else alert('Register successfully');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            // window.location = '/';
+            this.setState({
+                fullname: '',
+                username: '',
+                password: '',
+                avatar: '',
+            })
+        } else {
+            alert("Username is invalid. It should have more than 2 characters and not contains (_,-,@,...)!");
+            this.setState({
+                fullname: '',
+                username: '',
+                password: '',
+                avatar: '',
+            })
+        }
     }
     render(){
         return(
