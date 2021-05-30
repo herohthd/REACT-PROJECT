@@ -8,7 +8,7 @@ import '../styles/style.scss'
 class Contact extends React.Component {
     ValidateEmail(mail) 
     {
-        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myForm.emailAddr.value))
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
         {
             return (true)
         }
@@ -16,7 +16,7 @@ class Contact extends React.Component {
     }
     sendEmail(e) {
         e.preventDefault();
-        if(this.ValidateEmail){
+        if(this.ValidateEmail(e.target)){
             emailjs.sendForm('service_1djgpz8', 'template_673u2ko', e.target, 'user_mWGHyNTznGLPcYRbzqn5X')
             .then((result) => {
                 console.log(result.text);
