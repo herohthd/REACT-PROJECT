@@ -44,7 +44,7 @@ const Members = () => {
                 <div className="row">
                 {
                 items.map(item => 
-                    <MemberItem id={item._id} avatar={item.avatar} 
+                    <MemberItem key={item._id} id={item._id} avatar={item.avatar} 
                     fullname={item.fullname} username={item.username} 
                     date={item.date} favouritedRecipes={item.favouritedRecipes}
                     recipes={item.recipes}/>

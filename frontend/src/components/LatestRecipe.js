@@ -31,7 +31,8 @@ class RatedRecipe extends React.Component {
         pathname :"/recipes/",
         sort:"Latest"
       }
-      let LatestRecipes = this.state.recipes.map(item=><LatestRecipeItem images={item.image} 
+      let LatestRecipes = this.state.recipes.map(item=><LatestRecipeItem  key={item._id}
+        images={item.image} 
         avatars={item.user.avatar} authorsName={item.user.fullname} 
         foodTitles={item.title} foodDescriptions={item.description} 
         difficulty={item.difficulty} yeild={item.yeild} 

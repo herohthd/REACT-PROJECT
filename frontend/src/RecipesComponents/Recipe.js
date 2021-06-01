@@ -285,7 +285,8 @@ class Recipe extends React.Component {
                     {
                     (filterRecipes.length !== 0) ?
                         filterRecipes.map(recipe => 
-                            <RatedRecipeItem recipeID={recipe._id} images={recipe.image} 
+                            <RatedRecipeItem key={recipe._id}
+                            recipeID={recipe._id} images={recipe.image} 
                             authorID={recipe.user._id} date={recipe.date}
                             avatars={recipe.user.avatar} authorsName={recipe.user.fullname} 
                             foodTitles={recipe.title} foodDescriptions={recipe.description} 
@@ -296,7 +297,8 @@ class Recipe extends React.Component {
                         )
                         :( (category !== "" || cuisine !== "" || sort !== "" || ingredients !== "" || keyword !== "") ? <div>There is no recipe you want to find.</div>
                             :   recipes.map(recipe => 
-                                <RatedRecipeItem recipeID={recipe._id} images={recipe.image} 
+                                <RatedRecipeItem key={recipe._id}
+                                recipeID={recipe._id} images={recipe.image} 
                                 authorID={recipe.user._id} date={recipe.date}
                                 avatars={recipe.user.avatar} authorsName={recipe.user.fullname} 
                                 foodTitles={recipe.title} foodDescriptions={recipe.description} 

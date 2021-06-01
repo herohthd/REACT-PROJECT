@@ -29,7 +29,7 @@ class RatedAuthor extends React.Component {
           return <div>LOADING...</div>
         }
         let authors = this.state.authors.map(item=>
-                    <RatedAuthorItem authorImage={item.avatar} authorName={item.fullname} authorID={item._id}/>);
+                    <RatedAuthorItem key={item._id} authorImage={item.avatar} authorName={item.fullname} authorID={item._id}/>);
         return(
         <section>
             <div className="container">

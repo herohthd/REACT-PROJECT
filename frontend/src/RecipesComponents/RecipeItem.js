@@ -132,7 +132,7 @@ class RecipeItem extends React.Component {
                                         {
                                             props.steps.map(function(item, index){
                                                 return (
-                                                    <div>
+                                                    <div key={index}>
                                                         <div>Step {index+1}</div>
                                                         <li key={ index }>{item}</li>
                                                     </div>

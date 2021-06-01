@@ -31,7 +31,8 @@ class Favourited extends React.Component {
         pathname :"/recipes/",
         sort:"Most favourited"
       }
-      let FavouritedRecipes = this.state.recipes.map(item=><FavouritedItem images={item.image} 
+      let FavouritedRecipes = this.state.recipes.map(item=><FavouritedItem  key={item._id} 
+        images={item.image} 
         avatars={item.user.avatar} authorsName={item.user.fullname} 
         foodTitles={item.title} foodDescriptions={item.description} 
         difficulty={item.difficulty} yeild={item.yeild} 

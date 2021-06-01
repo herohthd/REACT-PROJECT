@@ -292,7 +292,7 @@ class Author extends React.Component {
                                                                             pathname: '/update',
                                                                             recipeID:recipe._id,
                                                                         }
-                                                                        return  <tr className="no-records-found">
+                                                                        return  <tr className="no-records-found" key={recipe._id}>
                                                                             <th>
                                                                                 <Link to={recipeInfor}>
                                                                                 <div className="th-inner-route"><img src={recipe.image} alt={recipe.title} width="120" height="80"></img></div>
@@ -399,7 +399,7 @@ class Author extends React.Component {
                                                                         };          
                                                                         // console.log(recipeInfor);  
                                                                         // console.log(recipe);  
-                                                                        return  <tr className="no-records-found">
+                                                                        return  <tr className="no-records-found" key={recipe._id}>
                                                                             <th>
                                                                                 <Link to={recipeInfor} className="link-title">
                                                                                 <div className="th-inner-route"><img src={recipe.image} alt={recipe.title} width="120" height="80"></img></div>
