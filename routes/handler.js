@@ -149,17 +149,18 @@ router.post('/delete', async(req,res) => {
 
 router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
-    let recipeExisted = 0;
+    var recipeExisted = 0;
     await signUpTemplateCopy.findById(userID,function(err, x) {
         for(let i=0;i<x.favouritedRecipes.length;i++){
             console.log("OK");
             if(recipeID == x.favouritedRecipes[i]){
                 console.log("EXISTED");
-                recipeExisted =1;
+                recipeExisted = 1;
                 break;
             }
         }
     });
+    console.log(recipeExisted);
     if(recipeExisted === 0){
         try {  
             const response = await signUpTemplateCopy.findByIdAndUpdate(userID,{
