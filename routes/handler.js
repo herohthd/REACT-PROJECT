@@ -152,7 +152,9 @@ router.post('/addFavourited', async(req,res) => {
     let recipeExisted = 0;
     await signUpTemplateCopy.findById(userID,function(err, x) {
         for(let i=0;i<x.favouritedRecipes.length;i++){
+            console.log("OK");
             if(recipeID == x.favouritedRecipes[i]){
+                console.log("EXISTED");
                 recipeExisted =1;
                 break;
             }
@@ -174,7 +176,7 @@ router.post('/addFavourited', async(req,res) => {
         }
         res.json({status:'ok'})
     }
-    else {
+    else  {
         return res.json({status:'error',error:'You already added this recipe!'})
     }
 })
