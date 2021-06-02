@@ -162,19 +162,19 @@ router.post('/addFavourited', async(req,res) => {
     console.log(recipeExisted === 0);
     console.log(recipeExisted === 1);
     if(recipeExisted === 0){
-        try {  
-            const response =  await signUpTemplateCopy.findByIdAndUpdate(userID,{
+        // try {  
+            const response =  signUpTemplateCopy.findByIdAndUpdate(userID,{
                 $push: { favouritedRecipes: recipeID }
             },{new:true})
-            const response1 =  await recipeTemplateCopy.findByIdAndUpdate(recipeID,{
+            const response1 =  recipeTemplateCopy.findByIdAndUpdate(recipeID,{
                 $inc: {numOfFavourited : 1}
             },{new:true})
             console.log("Add to favourited list successfully",response)
-        }
-        catch (error) {
-            console.log(error.message)
-            return res.json({status:'error',error:'Cannot add to favourited list!'})
-        }
+        // }
+        // catch (error) {
+        //     console.log(error.message)
+        //     return res.json({status:'error',error:'Cannot add to favourited list!'})
+        // }
         res.json({status:'ok'})
     }
     else  {
