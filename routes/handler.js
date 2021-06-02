@@ -149,7 +149,16 @@ router.post('/delete', async(req,res) => {
 
 router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
-        try {
+    let recipeExisted = 0;
+    await signUpTemplateCopy.findById(userID).forEach(function (x) {
+        x.favouritedRecipes.forEach(function (y) {
+            if (y == recipeID) {
+                recipeExisted = 1;
+            }
+        });
+    });
+    if(recipeExisted === 0){
+        try {  
             const response = await signUpTemplateCopy.findByIdAndUpdate(userID,{
                 $push: { favouritedRecipes: recipeID }
             },{new:true})
@@ -160,9 +169,13 @@ router.post('/addFavourited', async(req,res) => {
         }
         catch (error) {
             console.log(error.message)
-            return res.json({status:'error',error:'Cannot add to favourited list'})
+            return res.json({status:'error',error:'Cannot add to favourited list!'})
         }
         res.json({status:'ok'})
+    }
+    else {
+        return res.json({status:'error',error:'You already added this recipe!'})
+    }
 })
 
 router.post('/like', async(req,res) => {
