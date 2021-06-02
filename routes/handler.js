@@ -150,12 +150,13 @@ router.post('/delete', async(req,res) => {
 router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
     let recipeExisted = 0;
-    await signUpTemplateCopy.findById(userID).forEach(function (x) {
-        x.favouritedRecipes.forEach(function (y) {
-            if (y == recipeID) {
-                recipeExisted = 1;
+    await signUpTemplateCopy.findById(userID,function(err, x) {
+        for(let i=0;i<x.favouritedRecipes.length;i++){
+            if(recipeID == x.favouritedRecipes[i]){
+                recipeExisted =1;
+                break;
             }
-        });
+        }
     });
     if(recipeExisted === 0){
         try {  
