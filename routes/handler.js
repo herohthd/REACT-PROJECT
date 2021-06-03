@@ -31,7 +31,6 @@ router.post('/register', async(req,res) => {
 });
 
 router.post('/login', async(req,res) => {
-
     const {usernameLogin,passwordLogin} = req.body
     //use lean to get only json
     const user = await signUpTemplateCopy.findOne({username:usernameLogin}).lean()
