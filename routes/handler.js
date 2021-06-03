@@ -149,24 +149,18 @@ router.post('/delete', async(req,res) => {
 
 router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
-    var recipeExisted = 0;
-    await signUpTemplateCopy.findById(userID,function(err, x) {
-        for(let i=0;i<x.favouritedRecipes.length;i++){
-            if(recipeID == x.favouritedRecipes[i]){
-                console.log("EXISTED");
-                recipeExisted = 1;
-                break;
-            }
-        }
-    });
-    console.log(recipeExisted === 0);
-    console.log(recipeExisted === 1);
-    if(recipeExisted === 0){
+    // var recipeExisted = 0;
+    var user = await signUpTemplateCopy.findById(userID);
+    var recipeExisted = user.favouritedRecipes.find({recipeID});
+    console.log(recipeExisted);
+    // console.log(recipeExisted === 0);
+    // console.log(recipeExisted === 1);
+    if(recipeExisted){
         // try {  
-            const response =  signUpTemplateCopy.findByIdAndUpdate(userID,{
+            const response =  await signUpTemplateCopy.findByIdAndUpdate(userID,{
                 $push: { favouritedRecipes: recipeID }
             },{new:true})
-            const response1 =  recipeTemplateCopy.findByIdAndUpdate(recipeID,{
+            const response1 =  await recipeTemplateCopy.findByIdAndUpdate(recipeID,{
                 $inc: {numOfFavourited : 1}
             },{new:true})
             console.log("Add to favourited list successfully",response)
