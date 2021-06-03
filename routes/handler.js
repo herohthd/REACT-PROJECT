@@ -150,8 +150,8 @@ router.post('/delete', async(req,res) => {
 router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
     // var recipeExisted = 0;
-    var user = await signUpTemplateCopy.findById(userID);
-    var recipeExisted = await user.find({favouritedRecipes:"recipeID"});
+    // var user = await signUpTemplateCopy.findById(userID);
+    var recipeExisted = await signUpTemplateCopy.find({favouritedRecipes:"recipeID"});
     console.log(recipeExisted);
     // console.log(recipeExisted === 0);
     // console.log(recipeExisted === 1);
