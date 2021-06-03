@@ -79,7 +79,7 @@ router.post('/submit', async(req,res) => {
         }
         catch (error) {
             console.log(error.message)
-            return res.json({status:'error',error:'Cannot submit recipe'})
+            return res.json({status:'error',error:'Cannot submit recipe: title is duplicated!'})
         }
         res.json({status:'ok'})
 })

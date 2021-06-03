@@ -87,32 +87,15 @@ class Login extends React.Component {
         event.preventDefault();
         console.log(this.state.avatar);
         var usernameRegex = /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/;
+        var avatarRegex = /(https?:\/\/.*\.(?:png|jpg))/i;
+        var passwordRegex = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
         const registered = {
             fullname: this.state.fullname,
             username: this.state.username,
             password: this.state.password,
             avatar: this.state.avatar
         }
-        if (usernameRegex.test(registered.username)) {
-            axios.post('/register', registered)
-            .then(function (response) {
-                console.log(response);
-                if(response.data.status === 'error'){
-                    alert(response.data.error);
-                }
-                else alert('Register successfully');
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-            // window.location = '/';
-            this.setState({
-                fullname: '',
-                username: '',
-                password: '',
-                avatar: '',
-            })
-        } else {
+        if(!usernameRegex.test(registered.username)){
             alert("Username is invalid. It should have more than 2 characters and not contains (_,-,@,...)!");
             this.setState({
                 fullname: '',
@@ -121,6 +104,43 @@ class Login extends React.Component {
                 avatar: '',
             })
         }
+        if(!avatarRegex.test(registered.avatar)){
+            alert("Avatar is invalid. It should have form like: https::/*.png(jpg)!");
+            this.setState({
+                fullname: '',
+                username: '',
+                password: '',
+                avatar: '',
+            })
+        }
+        if(!passwordRegex.test(registered.password)){
+            alert("Password is not strong enough. It should has 2 upper case letters,one special case letter,2 digits,3 lower case letters and length at least is 8!")
+            this.setState({
+                fullname: '',
+                username: '',
+                password: '',
+                avatar: '',
+            })
+        }
+        
+        axios.post('/register', registered)
+        .then(function (response) {
+            console.log(response);
+            if(response.data.status === 'error'){
+                alert(response.data.error);
+            }
+            else alert('Register successfully');
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        // window.location = '/';
+        this.setState({
+            fullname: '',
+            username: '',
+            password: '',
+            avatar: '',
+        })
     }
     render(){
         return(

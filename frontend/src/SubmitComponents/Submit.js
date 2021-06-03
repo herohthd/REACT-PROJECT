@@ -110,34 +110,8 @@ class Login extends React.Component {
         }
         var imageRegex = /(https?:\/\/.*\.(?:png|jpg))/i;
         var difficultyRegex = /(?:hard|medium|easy)/i;
-        if(imageRegex.test(recipe.image) && difficultyRegex.test(recipe.difficulty)) {
-            axios.post('/submit', recipe)
-            .then(function (response) {
-                console.log(response);
-                if(response.data.status === 'error'){
-                    alert(response.data.error);
-                }
-                else alert('Submit successfully');
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-            // window.location = '/';
-            this.setState({
-                title:'',
-                cuisine: '',
-                category: '',
-                image:'',
-                description:'',
-                ingredients:'',
-                steps:'',
-                difficulty:'',
-                yeild:'',
-                numOfPeople:'',
-                times:''
-            })
-        } else {
-            alert("Image address is invalid!");
+        if(!imageRegex.test(recipe.image)){
+            alert("Image address should be https://*.png(jpg)!");
             this.setState({
                 title:'',
                 cuisine: '',
@@ -152,6 +126,47 @@ class Login extends React.Component {
                 times:''
             })
         }
+        if(!difficultyRegex.test(recipe.difficulty)){
+            alert("Image address should be https://*.png(jpg)!");
+            this.setState({
+                title:'',
+                cuisine: '',
+                category: '',
+                image:'',
+                description:'',
+                ingredients:'',
+                steps:'',
+                difficulty:'',
+                yeild:'',
+                numOfPeople:'',
+                times:''
+            })
+        }
+        axios.post('/submit', recipe)
+        .then(function (response) {
+            console.log(response);
+            if(response.data.status === 'error'){
+                alert(response.data.error);
+            }
+            else alert('Submit successfully');
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        // window.location = '/';
+        this.setState({
+            title:'',
+            cuisine: '',
+            category: '',
+            image:'',
+            description:'',
+            ingredients:'',
+            steps:'',
+            difficulty:'',
+            yeild:'',
+            numOfPeople:'',
+            times:''
+        })
     }
     render(){
         return(
