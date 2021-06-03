@@ -153,7 +153,7 @@ router.post('/addFavourited', async(req,res) => {
     // var recipeExisted = 0;
     // var user = await signUpTemplateCopy.findById(userID);
     try{
-        recipeExisted = await signUpTemplateCopy.find({favouritedRecipes:recipeID});
+        recipeExisted = await signUpTemplateCopy.findById(userID).find({favouritedRecipes:recipeID});
     }
     catch(error){
         console.log(error.message);
