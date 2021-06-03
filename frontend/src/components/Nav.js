@@ -64,7 +64,7 @@ class Nav extends React.Component {
           <div className="nav__menu flex flex-ai-c">
             <div className="nav__menu-item"><Link to={authorInfor}><i className="fa fa-user" aria-hidden="true"></i>
                             <span>HI {currentUser.username}</span></Link></div>
-            <div className="nav__menu-item"><Link to='/Login' onClick={this.logOut}><i className="fa fa-sign-in" aria-hidden="true"></i>
+            <div className="nav__menu-item"><Link to='/' onClick={this.logOut}><i className="fa fa-sign-in" aria-hidden="true"></i>
                             <span>LOG OUT</span></Link></div>
             <div className="nav__menu-item"><Link to='/Submit'><i className="fa fa-user" aria-hidden="true"></i>
                             <span>SUBMIT RECIPE</span></Link></div>
