@@ -108,31 +108,50 @@ class Login extends React.Component {
             numOfPeople: this.state.numOfPeople,
             times: this.state.times
         }
-        axios.post('/submit', recipe)
-        .then(function (response) {
-            console.log(response);
-            if(response.data.status === 'error'){
-                alert(response.data.error);
-            }
-            else alert('Submit successfully');
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        // window.location = '/';
-        this.setState({
-            title:'',
-            cuisine: '',
-            category: '',
-            image:'',
-            description:'',
-            ingredients:'',
-            steps:'',
-            difficulty:'',
-            yeild:'',
-            numOfPeople:'',
-            times:''
-        })
+        var imageRegex = /(https?:\/\/.*\.(?:png|jpg))/i;
+        var difficultyRegex = /(?:hard|medium|easy)/i;
+        if(imageRegex.test(recipe.image) && difficultyRegex.test(recipe.difficulty)) {
+            axios.post('/submit', recipe)
+            .then(function (response) {
+                console.log(response);
+                if(response.data.status === 'error'){
+                    alert(response.data.error);
+                }
+                else alert('Submit successfully');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            // window.location = '/';
+            this.setState({
+                title:'',
+                cuisine: '',
+                category: '',
+                image:'',
+                description:'',
+                ingredients:'',
+                steps:'',
+                difficulty:'',
+                yeild:'',
+                numOfPeople:'',
+                times:''
+            })
+        } else {
+            alert("Image address is invalid!");
+            this.setState({
+                title:'',
+                cuisine: '',
+                category: '',
+                image:'',
+                description:'',
+                ingredients:'',
+                steps:'',
+                difficulty:'',
+                yeild:'',
+                numOfPeople:'',
+                times:''
+            })
+        }
     }
     render(){
         return(
@@ -171,7 +190,7 @@ class Login extends React.Component {
                                 </div>
 
                                 <div className="form-group flex">
-                                    <label for="image">Image</label>
+                                    <label for="image">Image(900x600)</label>
                                     <input type="text"
                                     onChange={this.changeImage}
                                     value={this.state.image}
