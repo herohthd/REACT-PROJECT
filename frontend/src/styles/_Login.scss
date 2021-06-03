@@ -31,6 +31,9 @@
           font-family: "Ubuntu", sans-serif;
         }
         form {
+          #message{
+            display:none;
+          }
           .form-group {
             margin-bottom: 15px;
             label {

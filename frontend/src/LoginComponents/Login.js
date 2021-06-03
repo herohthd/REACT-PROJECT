@@ -96,16 +96,10 @@ class Login extends React.Component {
             avatar: this.state.avatar
         }
         if(!usernameRegex.test(registered.username)){
-            alert("Username is invalid. It should have more than 2 characters and not contains (_,-,@,...)!");
-            this.setState({
-                fullname: '',
-                username: '',
-                password: '',
-                avatar: '',
-            })
-        }
-        else if(!avatarRegex.test(registered.avatar)){
-            alert("Avatar is invalid. It should have form like: https::/*.png(jpg)!");
+            document.getElementById('message').style.display = "block";
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').style.fontWeight = 600;
+            document.getElementById('message-detail').innerText = "Username is invalid. It should have more than 2 characters and not contains (_,-,@,...)!";
             this.setState({
                 fullname: '',
                 username: '',
@@ -114,7 +108,22 @@ class Login extends React.Component {
             })
         }
         else if(!passwordRegex.test(registered.password)){
-            alert("Password is not strong enough. It should has at least 1 upper case, 1 lower case, 1 numeric character, 1 special character and 8 characters or longer!")
+            document.getElementById('message').style.display = "block";
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').style.fontWeight = 600;
+            document.getElementById('message-detail').innerText = "Password is not strong enough. It should has at least 1 upper case, 1 lower case, 1 numeric character, 1 special character and 8 characters or longer!";
+            this.setState({
+                fullname: '',
+                username: '',
+                password: '',
+                avatar: '',
+            })
+        }
+        else if(!avatarRegex.test(registered.avatar)){
+            document.getElementById('message').style.display = "block";
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').style.fontWeight = 600;
+            document.getElementById('message-detail').innerText = "Avatar is invalid. It should have form like: https::/*.png(jpg)!";
             this.setState({
                 fullname: '',
                 username: '',
@@ -186,7 +195,9 @@ class Login extends React.Component {
                                     value={this.state.avatar}
                                     required></input>
                                 </div>
-
+                                <div id="message" className ="form-group">
+                                    <p id="message-detail"></p>
+                                </div>
                                 <input type="submit" className="btn" value="Register"></input>
                             </form>
                         </div>
@@ -211,7 +222,7 @@ class Login extends React.Component {
                                     value={this.state.passwordLogIn}
                                     required></input>
                                 </div>
-
+    
                                 <input type="submit" className="btn" value="Log in"></input>
                             </form>
                         </div>

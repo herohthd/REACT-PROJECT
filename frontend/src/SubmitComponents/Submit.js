@@ -111,7 +111,10 @@ class Login extends React.Component {
         var imageRegex = /(https?:\/\/.*\.(?:png|jpg))/i;
         var difficultyRegex = /(?:hard|medium|easy)/i;
         if(!imageRegex.test(recipe.image)){
-            alert("Image address should be https://*.png(jpg)!");
+            document.getElementById('message').style.display = "block";
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').style.fontWeight = 600;
+            document.getElementById('message-detail').innerText = "Image address should be https://*.png(jpg)!";
             this.setState({
                 title:'',
                 cuisine: '',
@@ -127,7 +130,10 @@ class Login extends React.Component {
             })
         }
         else if(!difficultyRegex.test(recipe.difficulty)){
-            alert("Image address should be https://*.png(jpg)!");
+            document.getElementById('message').style.display = "block";
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').style.fontWeight = 600;
+            document.getElementById('message-detail').innerText = "Difficulty should be either hard,medium or easy";
             this.setState({
                 title:'',
                 cuisine: '',
@@ -272,7 +278,9 @@ class Login extends React.Component {
                                     value={this.state.times}
                                     required></input>
                                 </div>
-    
+                                <div id="message" className="form-group">
+                                    <p id="message-detail"></p>
+                                </div>
                                 <input type="submit" className="btn" value="Submit"></input>
                             </form>
                         </div>
