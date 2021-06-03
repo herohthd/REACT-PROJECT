@@ -144,6 +144,8 @@ class Login extends React.Component {
             numOfPeople: this.state.numOfPeople,
             times: this.state.times
         }
+        var imageRegex = /(https?:\/\/.*\.(?:png|jpg))/i;
+        var difficultyRegex = /(?:hard|medium|easy)/i;
         if(!imageRegex.test(recipe.image)){
             alert("Image address should be https://*.png(jpg)!");
             this.setState({
