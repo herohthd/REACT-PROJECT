@@ -149,23 +149,24 @@ router.post('/delete', async(req,res) => {
 
 router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
-    var recipeExisted;
+    // var recipeExisted;
     // var recipeExisted = 0;
     // var user = await signUpTemplateCopy.findById(userID);
-    try{
-        recipeExisted = await signUpTemplateCopy.findById(userID).find({favouritedRecipes:recipeID});
-    }
-    catch(error){
-        console.log(error.message);
-    }
-    console.log(recipeExisted);
-    // console.log(recipeExisted === 0);
-    // console.log(recipeExisted === 1);
-    if(recipeExisted === []){
+    // try{
+    //     recipeExisted = await signUpTemplateCopy.findById(userID).find({favouritedRecipes:recipeID});
+    // }
+    // catch(error){
+    //     console.log(error.message);
+    // }
+    // console.log(recipeExisted);
+    // // console.log(recipeExisted === 0);
+    // // console.log(recipeExisted === 1);
+    // if(recipeExisted){
         try {  
-            const response =  await signUpTemplateCopy.findByIdAndUpdate(userID,{
-                $push: { favouritedRecipes: recipeID }
-            },{new:true})
+            const response =  await signUpTemplateCopy.updateOne(
+                {_id:userID},
+                {$addToSet : {favouritedRecipes:recipeID} }
+            )
             const response1 =  await recipeTemplateCopy.findByIdAndUpdate(recipeID,{
                 $inc: {numOfFavourited : 1}
             },{new:true})
@@ -176,10 +177,10 @@ router.post('/addFavourited', async(req,res) => {
             return res.json({status:'error',error:'Cannot add to favourited list!'})
         }
         res.json({status:'ok'})
-    }
-    else  {
-        return res.json({status:'error',error:'You already added this recipe!'})
-    }
+    // }
+    // else  {
+    //     return res.json({status:'error',error:'You already added this recipe!'})
+    // }
 })
 
 router.post('/like', async(req,res) => {
