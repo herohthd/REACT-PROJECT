@@ -88,7 +88,7 @@ class Login extends React.Component {
         console.log(this.state.avatar);
         var usernameRegex = /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/;
         var avatarRegex = /(https?:\/\/.*\.(?:png|jpg))/i;
-        var passwordRegex = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
+        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
         const registered = {
             fullname: this.state.fullname,
             username: this.state.username,
@@ -114,7 +114,7 @@ class Login extends React.Component {
             })
         }
         else if(!passwordRegex.test(registered.password)){
-            alert("Password is not strong enough. It should has 2 upper case letters,one special case letter,2 digits,3 lower case letters and length at least is 8!")
+            alert("Password is not strong enough. It should has at least 1 upper case, 1 lower case, 1 numeric character, 1 special character and 8 characters or longer!")
             this.setState({
                 fullname: '',
                 username: '',
