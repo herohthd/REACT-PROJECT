@@ -151,12 +151,17 @@ router.post('/addFavourited', async(req,res) => {
     const {recipeID,userID} = req.body
     // var recipeExisted = 0;
     // var user = await signUpTemplateCopy.findById(userID);
-    var recipeExisted = await signUpTemplateCopy.find({favouritedRecipes:"recipeID"});
+    try{
+    var recipeExisted = await signUpTemplateCopy.find({favouritedRecipes:recipeID});
+    }
+    catch(error){
+        console.log(error.message);
+    }
     console.log(recipeExisted);
     // console.log(recipeExisted === 0);
     // console.log(recipeExisted === 1);
     if(recipeExisted){
-        // try {  
+        try {  
             const response =  await signUpTemplateCopy.findByIdAndUpdate(userID,{
                 $push: { favouritedRecipes: recipeID }
             },{new:true})
@@ -164,11 +169,11 @@ router.post('/addFavourited', async(req,res) => {
                 $inc: {numOfFavourited : 1}
             },{new:true})
             console.log("Add to favourited list successfully",response)
-        // }
-        // catch (error) {
-        //     console.log(error.message)
-        //     return res.json({status:'error',error:'Cannot add to favourited list!'})
-        // }
+        }
+        catch (error) {
+            console.log(error.message)
+            return res.json({status:'error',error:'Cannot add to favourited list!'})
+        }
         res.json({status:'ok'})
     }
     else  {
