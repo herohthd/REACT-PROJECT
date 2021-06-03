@@ -126,7 +126,7 @@ class Login extends React.Component {
                 times:''
             })
         }
-        if(!difficultyRegex.test(recipe.difficulty)){
+        else if(!difficultyRegex.test(recipe.difficulty)){
             alert("Image address should be https://*.png(jpg)!");
             this.setState({
                 title:'',
@@ -142,31 +142,33 @@ class Login extends React.Component {
                 times:''
             })
         }
-        axios.post('/submit', recipe)
-        .then(function (response) {
-            console.log(response);
-            if(response.data.status === 'error'){
-                alert(response.data.error);
-            }
-            else alert('Submit successfully');
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-        // window.location = '/';
-        this.setState({
-            title:'',
-            cuisine: '',
-            category: '',
-            image:'',
-            description:'',
-            ingredients:'',
-            steps:'',
-            difficulty:'',
-            yeild:'',
-            numOfPeople:'',
-            times:''
-        })
+        else {
+            axios.post('/submit', recipe)
+            .then(function (response) {
+                console.log(response);
+                if(response.data.status === 'error'){
+                    alert(response.data.error);
+                }
+                else alert('Submit successfully');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            // window.location = '/';
+            this.setState({
+                title:'',
+                cuisine: '',
+                category: '',
+                image:'',
+                description:'',
+                ingredients:'',
+                steps:'',
+                difficulty:'',
+                yeild:'',
+                numOfPeople:'',
+                times:''
+            })
+        }
     }
     render(){
         return(

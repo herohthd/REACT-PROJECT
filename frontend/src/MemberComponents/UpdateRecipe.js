@@ -127,6 +127,8 @@ class Login extends React.Component {
     }
     onSubmit(event){
         event.preventDefault();
+        this.state.ingredients.trim();
+        this.state.steps.trim();
         const recipe = {
             recipeID: this.props.location.recipeID,
             userID: this.state.user,
@@ -142,17 +144,51 @@ class Login extends React.Component {
             numOfPeople: this.state.numOfPeople,
             times: this.state.times
         }
-        axios.post('/update', recipe)
-        .then(function (response) {
-            console.log(response);
-            if(response.data.status === 'error'){
-                alert(response.data.error);
-            }
-            else alert('Update successfully');
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        if(!imageRegex.test(recipe.image)){
+            alert("Image address should be https://*.png(jpg)!");
+            this.setState({
+                title:'',
+                cuisine: '',
+                category: '',
+                image:'',
+                description:'',
+                ingredients:'',
+                steps:'',
+                difficulty:'',
+                yeild:'',
+                numOfPeople:'',
+                times:''
+            })
+        }
+        else if(!difficultyRegex.test(recipe.difficulty)){
+            alert("Image address should be https://*.png(jpg)!");
+            this.setState({
+                title:'',
+                cuisine: '',
+                category: '',
+                image:'',
+                description:'',
+                ingredients:'',
+                steps:'',
+                difficulty:'',
+                yeild:'',
+                numOfPeople:'',
+                times:''
+            })
+        }
+        else {
+            axios.post('/update', recipe)
+            .then(function (response) {
+                console.log(response);
+                if(response.data.status === 'error'){
+                    alert(response.data.error);
+                }
+                else alert('Update successfully');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
         // window.location = '/';
     }
 

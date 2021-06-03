@@ -104,7 +104,7 @@ class Login extends React.Component {
                 avatar: '',
             })
         }
-        if(!avatarRegex.test(registered.avatar)){
+        else if(!avatarRegex.test(registered.avatar)){
             alert("Avatar is invalid. It should have form like: https::/*.png(jpg)!");
             this.setState({
                 fullname: '',
@@ -113,7 +113,7 @@ class Login extends React.Component {
                 avatar: '',
             })
         }
-        if(!passwordRegex.test(registered.password)){
+        else if(!passwordRegex.test(registered.password)){
             alert("Password is not strong enough. It should has 2 upper case letters,one special case letter,2 digits,3 lower case letters and length at least is 8!")
             this.setState({
                 fullname: '',
@@ -122,25 +122,26 @@ class Login extends React.Component {
                 avatar: '',
             })
         }
-        
-        axios.post('/register', registered)
-        .then(function (response) {
-            console.log(response);
-            if(response.data.status === 'error'){
-                alert(response.data.error);
-            }
-            else alert('Register successfully');
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-        // window.location = '/';
-        this.setState({
-            fullname: '',
-            username: '',
-            password: '',
-            avatar: '',
-        })
+        else{
+            axios.post('/register', registered)
+            .then(function (response) {
+                console.log(response);
+                if(response.data.status === 'error'){
+                    alert(response.data.error);
+                }
+                else alert('Register successfully');
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            // window.location = '/';
+            this.setState({
+                fullname: '',
+                username: '',
+                password: '',
+                avatar: '',
+            })
+        }
     }
     render(){
         return(
