@@ -47,6 +47,10 @@ class Nav extends React.Component {
   }
   logOut() {
     AuthService.logout();
+    this.setState({
+      currentUser: undefined,
+      authorInfor: undefined
+    });
   }
   render() {  
     const currentUser = this.state.currentUser;
