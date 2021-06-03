@@ -161,7 +161,7 @@ router.post('/addFavourited', async(req,res) => {
     console.log(recipeExisted);
     // console.log(recipeExisted === 0);
     // console.log(recipeExisted === 1);
-    if(!recipeExisted){
+    if(recipeExisted === []){
         try {  
             const response =  await signUpTemplateCopy.findByIdAndUpdate(userID,{
                 $push: { favouritedRecipes: recipeID }
